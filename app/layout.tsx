@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Poppins } from "next/font/google";
+import Navbar from "@/components/shared/Navbar/Navbar";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={`${poppins.variable} font-poppins text-white overflow-x-hidden`}>
         <div id="root-layout">
+          <Navbar />
           
           {children}
 
