@@ -1,0 +1,50 @@
+import Link from "next/link";
+import Image from "next/image";
+import Kahim from "@/public/image/Home/Kahim.png";
+
+export default function Hero() {
+  return (
+    <main className="relative overflow-hidden bg-[#FFE8DB]">
+      <div className="w-full max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto px-4 pb-20">
+        <section className="flex flex-col md:flex-row items-center justify-between py-12">
+          <div className="space-y-4">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-7xl text-center md:text-left font-bold leading-snug">
+              <span className="text-black">Himpunan</span>
+              <br />
+              <span className="text-[#4B061A]">Mahasiswa </span>
+              <span className="text-black">
+                Sistem <br /> Informasi
+              </span>
+            </h1>
+
+            <div className="flex gap-4">
+              <Link
+                href="/jelajahi"
+                className="bg-[#800020] hover:bg-[#660019] text-white px-6 py-2 rounded-lg shadow-md transition"
+              >
+                Jelajahi
+              </Link>
+              <Link
+                href="/hubungi-kami"
+                className="px-6 py-2 rounded-lg shadow-md border border-black text-black transition hover:bg-black hover:text-white"
+              >
+                Hubungi Kami
+              </Link>
+            </div>
+          </div>
+
+          {/* Gambar */}
+          <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-120 lg:h-120 xl:w-150 xl:h-150 mt-8 md:mt-0">
+            <Image
+              src={Kahim}
+              alt="Ketua dan Wakil Himpunan"
+              fill
+              className="object-contain"
+              quality={100}
+            />
+          </div>
+        </section>
+      </div>
+    </main>
+  );
+}
