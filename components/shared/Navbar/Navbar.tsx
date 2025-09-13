@@ -43,7 +43,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <nav className="hidden md:flex mr-8">
+          <nav className="hidden lg:flex mr-8">
             <NavigationMenu>
               <NavigationMenuList className="flex flex-row gap-8">
                 {navMenu.map(({ title, path }) => {
@@ -73,7 +73,7 @@ export default function Navbar() {
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="flex md:hidden">
+          <div className="flex lg:hidden">
             <button
               className="p-2"
               onClick={() => setMenuOpen((prev) => !prev)}
@@ -101,7 +101,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -32, scale: 0.98 }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="md:hidden bg-[#4B061A] px-4 pb-4 flex justify-center absolute left-0 right-0 top-20"
+              className="lg:hidden bg-[#4B061A] px-4 pb-4 flex justify-center absolute left-0 right-0 top-20"
             >
               <div className="max-w-xs w-full mx-auto flex flex-col items-center">
                 <NavigationMenu>
