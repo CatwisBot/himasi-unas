@@ -19,7 +19,7 @@ export default function Hero() {
 
             <div className="flex gap-4">
               <Link
-                href="/jelajahi"
+                href="http://si.ftki.unas.ac.id/"
                 className="bg-[#800020] hover:bg-[#660019] text-white px-6 py-2 rounded-lg shadow-md transition"
               >
                 Jelajahi
