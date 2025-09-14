@@ -37,7 +37,7 @@ export default function Hero() {
           <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-120 lg:h-120 xl:w-150 xl:h-150 mt-8 md:mt-0">
             <Image
               src={Kahim}
-              alt="Ketua dan Wakil Himpunan"
+              alt="Ketua dan Wakil HIMASI UNAS"
               fill
               className="object-contain"
               quality={100}

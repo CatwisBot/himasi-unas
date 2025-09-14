@@ -31,7 +31,7 @@ export default function Navbar() {
           <Link href="/" className="flex flex-row items-center space-x-2 md:space-x-0">
             <Image
               src={HIMASI}
-              alt="HIMASI Logo"
+              alt="Logo HIMASI UNAS"
               width={140}
               height={70}
               className="h-[50px] w-[50px] object-contain md:h-[60px] md:w-[100px]"
