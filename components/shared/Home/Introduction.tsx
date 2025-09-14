@@ -3,7 +3,7 @@ import HIMASI from "@/app/favicon.ico";
 
 export default function Introduction() {
     return(
-        <main className="min-h-screen bg-[linear-gradient(to_bottom,#FFE8DB_0%,#E4C6BE_10%,#994555_20%,#732E39_30%,#4B061A_70%,#4B061A_100%)]">
+        <main className="bg-[linear-gradient(to_bottom,#FFE8DB_0%,#E4C6BE_10%,#994555_20%,#732E39_30%,#4B061A_70%,#4B061A_100%)]">
           <div className="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto px-4 flex justify-center items-center relative gap-4 pb-6">
             <div>
               <Image src={HIMASI} alt="Logo HIMASI UNAS" width={60} height={60} />
@@ -16,6 +16,11 @@ export default function Introduction() {
             <div>
              <Image src={HIMASI} alt="Logo HIMASI" width={60} height={60} />
             </div>
+           </div>
+
+           <div className="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto px-8 md:px-4 text-justify md:text-center text-white text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg leading-relaxed pt-4 pb-12 font-bold">
+            <p className="hidden lg:block">Selamat datang di Website HIMASI, Himpunan Mahasiswa Sistem Informasi!<br />Organisasi mahasiswa yang berdedikasi untuk mengembangkan potensi akademik, profesional, dan sosial di<br />bidang Sistem Informasi. Dengan berbagai kegiatan seperti seminar, pelatihan, hingga proyek kolaboratif, kami<br />bertujuan untuk menciptakan lingkungan belajar yang inspiratif sekaligus membangun jejaring yang solid di<br />antara mahasiswa.</p>
+            <p className="lg:hidden" style={{ textAlignLast: "center" }}>Selamat datang di Website HIMASI, Himpunan Mahasiswa Sistem Informasi! Organisasi mahasiswa yang berdedikasi untuk mengembangkan potensi akademik, profesional, dan sosial di bidang Sistem Informasi. Dengan berbagai kegiatan seperti seminar, pelatihan, hingga proyek kolaboratif, kami bertujuan untuk menciptakan lingkungan belajar yang inspiratif sekaligus membangun jejaring yang solid di antara mahasiswa.</p>
            </div>
         </main>
     )
