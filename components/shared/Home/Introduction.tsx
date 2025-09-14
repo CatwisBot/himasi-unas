@@ -1,9 +1,11 @@
 import Image from "next/image";
 import HIMASI from "@/app/favicon.ico";
+import Card from "@/components/ui/cardDivision";
+import { divisions } from "@/constants/Home/Division";
 
 export default function Introduction() {
     return(
-        <main className="bg-[linear-gradient(to_bottom,#FFE8DB_0%,#E4C6BE_10%,#994555_20%,#732E39_30%,#4B061A_70%,#4B061A_100%)]">
+        <main className="bg-[linear-gradient(to_bottom,#FFE8DB_1%,#E4C6BE_10%,#994555_15%,#732E39_20%,#4B061A_30%)]">
           <div className="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto px-4 flex justify-center items-center relative gap-4 pb-6">
             <div>
               <Image src={HIMASI} alt="Logo HIMASI UNAS" width={60} height={60} />
@@ -25,6 +27,14 @@ export default function Introduction() {
 
           <div className="flex justify-center items-center pb-6">
             <p className="text-xs md:text-sm lg:text-base xl:text-lg text-white font-bold whitespace-pre">34 Anggota   ━━━   5 Divisi</p>
+          </div>
+
+          <div className="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-7xl flex justify-center mx-auto px-4 pb-10">
+            <div className="flex flex-wrap justify-center gap-6">
+              {divisions.map((division) => (
+                <Card key={division.id} {...division} />
+              ))}
+            </div>
           </div>
         </main>
     )
