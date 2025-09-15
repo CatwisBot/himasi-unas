@@ -4,7 +4,7 @@ import Kahim from "@/public/image/Home/Kahim.png";
 
 export default function Hero() {
   return (
-    <main className="relative overflow-hidden bg-[#FFE8DB]">
+    <main className="relative overflow-hidden bg-[#FFE8DB] !bg-[#FFE8DB]">
       <div className="w-full max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto px-4 pb-3 sm:pb-10">
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 sm:pt-12 pb-12">
           <div className="space-y-4">
