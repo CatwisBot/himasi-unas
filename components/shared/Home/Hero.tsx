@@ -26,7 +26,7 @@ export default function Hero() {
               </Link>
               <Link
                 href="/hubungi-kami"
-                className="px-6 py-2 rounded-lg shadow-md border border-black text-black transition hover:bg-black hover:text-white"
+                className="px-6 py-2 rounded-lg shadow-md border border-black text-black transition hover:bg-[#800020] hover:border-[#800020] hover:text-white"
               >
                 Hubungi Kami
               </Link>
