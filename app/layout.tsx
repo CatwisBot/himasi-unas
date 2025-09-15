@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import { Poppins } from "next/font/google";
 import Navbar from "@/components/shared/Navbar/Navbar";
@@ -12,11 +13,11 @@ const poppins = Poppins({
 });
 
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  viewportFit: 'cover',
+  viewportFit: "cover",
 };
 
 export const metadata: Metadata = {
@@ -28,14 +29,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} font-poppins text-white overflow-x-hidden`}>
-        <div id="root-layout">
-          <Navbar />
-          
-          {children}
-
-        </div>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${poppins.variable} font-poppins text-white overflow-x-hidden`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+        >
+          <div id="root-layout">
+            <Navbar />
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
