@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import HIMASI from "@/app/favicon.ico";
 import Card from "@/components/ui/cardDivision";
 import { divisions } from "@/constants/Home/Division";
@@ -29,12 +30,18 @@ export default function Introduction() {
             <p className="text-xs md:text-sm lg:text-base xl:text-lg text-white font-bold whitespace-pre">34 Anggota   ━━━   5 Divisi</p>
           </div>
 
-          <div className="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-7xl flex justify-center mx-auto px-4 pb-10">
+          <div className="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-7xl flex justify-center mx-auto px-4 pb-8">
             <div className="flex flex-wrap justify-center gap-6">
               {divisions.map((division) => (
                 <Card key={division.id} {...division} />
               ))}
             </div>
+          </div>
+
+          <div className="w-full flex justify-center pb-20">
+            <Link href="/struktur" className="bg-[#FFE8DB] text-xs md:text-sm lg:text-base xl:text-lg text-black font-bold px-4 md:px-8 py-3 rounded-xl hover:rotate-1 hover:bg-[#E4C6BE] transition">
+              Info Lebih Lanjut
+            </Link>
           </div>
         </main>
     )
