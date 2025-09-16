@@ -1,10 +1,5 @@
 @import "tailwindcss";
 
-.hide-navbar-footer ~ #root-layout nav,
-.hide-navbar-footer ~ #root-layout footer {
-  display: none !important;
-}
-
 body:has(.hide-navbar-footer) #root-layout > nav,
 body:has(.hide-navbar-footer) #root-layout > footer {
   display: none !important;

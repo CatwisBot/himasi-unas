@@ -40,7 +40,6 @@ export default function Hero() {
               alt="Ketua dan Wakil HIMASI UNAS"
               fill
               className="object-contain"
-              quality={100}
             />
           </div>
         </div>
