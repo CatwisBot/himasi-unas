@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -17,29 +18,50 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-2">Menu</h4>
             <ul className="space-y-1 text-sm">
-              <li><a href="/" className="hover:underline">Beranda</a></li>
-              <li><a href="/about" className="hover:underline">Tentang</a></li>
-              <li><a href="/events" className="hover:underline">Kegiatan</a></li>
-              <li><a href="/contact" className="hover:underline">Kontak</a></li>
+              <li>
+                <Link href="/" className="hover:underline">Beranda</Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:underline">Tentang</Link>
+              </li>
+              <li>
+                <Link href="/events" className="hover:underline">Kegiatan</Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:underline">Kontak</Link>
+              </li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold mb-2">Sosial Media</h4>
             <ul className="space-y-1 text-sm">
               <li>
-                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                <Link
+                  href="https://instagram.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
                   Instagram
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                <Link
+                  href="https://www.linkedin.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
                   LinkedIn
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="mailto:himasi@unas.ac.id" className="hover:underline">
+                <Link
+                  href="mailto:himasi@unas.ac.id"
+                  className="hover:underline"
+                >
                   Email
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
