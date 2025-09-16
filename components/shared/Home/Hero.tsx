@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import Kahim from "@/public/image/Home/Kahim.png";
+import Kahim from "@/public/image/Home/Kahims.png";
 
 export default function Hero() {
   return (
