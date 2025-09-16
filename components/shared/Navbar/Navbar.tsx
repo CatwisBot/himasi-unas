@@ -10,10 +10,7 @@ import {
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
-  NavigationMenuContent,
-  NavigationMenuTrigger,
   NavigationMenuLink,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navMenu";
 import HIMASI from "@/public/icon/HIMASI.png";
 import { AnimatePresence, motion } from "framer-motion";
@@ -134,42 +131,5 @@ export default function Navbar() {
         </AnimatePresence>
       </div>
     </header>
-  );
-}
-
-interface NestedNav extends React.HTMLAttributes<HTMLDivElement> {
-  title: string;
-  path: string;
-  menu: { name: string; href: string; desc?: string }[];
-  closeMenu: React.MouseEventHandler;
-}
-
-function NestedNav({ title, path, menu, closeMenu }: NestedNav) {
-  const pathname = usePathname();
-
-  return (
-    <NavigationMenuItem
-      className={`z-50 ${pathname.includes(path) ? "nav-active" : "nav"}`}
-    >
-      <NavigationMenuTrigger className="relative px-2 py-1 text-white font-bold text-base transition-colors duration-150 after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:h-0.5 after:bg-white after:w-0 after:transition-all after:duration-300 hover:after:w-full data-[state=open]:after:w-full">
-        {title}
-      </NavigationMenuTrigger>
-      <NavigationMenuContent>
-        <ul className="w-[300px] text-left">
-          {menu.map(({ name, href }, index) => (
-            <NavigationMenuLink key={index} onClick={closeMenu}>
-              <Link
-                href={href}
-                className="hover:bg-[#2991E0] block w-[300px] select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:bg-opacity-10 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-              >
-                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                  {name}
-                </p>
-              </Link>
-            </NavigationMenuLink>
-          ))}
-        </ul>
-      </NavigationMenuContent>
-    </NavigationMenuItem>
   );
 }
