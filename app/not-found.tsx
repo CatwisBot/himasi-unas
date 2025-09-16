@@ -39,7 +39,7 @@ export default function NotFound() {
   }, []);
 
   return (
-    <div className="hide-navbar-footer relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#4B061A] from-1% to-90% to-[#40061A] px-4 overflow-hidden">
+    <div className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#4B061A] from-1% to-90% to-[#40061A] px-4 overflow-hidden">
       
       <AnimatePresence>
         {particles.map((p) => (
