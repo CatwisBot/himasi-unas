@@ -3,6 +3,7 @@ import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import { Poppins } from "next/font/google";
 import Navbar from "@/components/shared/Navbar/Navbar";
+import { usePathname } from "next/navigation";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -27,6 +28,19 @@ export const metadata: Metadata = {
   icons: "./favicon.ico",
 };
 
+function LayoutContent({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  // Sembunyikan Navbar di halaman not-found
+  const hideNavbar = pathname === "/not-found";
+
+  return (
+    <div id="root-layout">
+      {!hideNavbar && <Navbar />}
+      {children}
+    </div>
+  );
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -38,10 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           defaultTheme="light"
           enableSystem={false}
         >
-          <div id="root-layout">
-            <Navbar />
-            {children}
-          </div>
+          <LayoutContent>{children}</LayoutContent>
         </ThemeProvider>
       </body>
     </html>
