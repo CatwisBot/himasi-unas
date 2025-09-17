@@ -481,51 +481,39 @@ class App {
     const defaultItems = [
       {
         image: `https://picsum.photos/seed/1/800/600?grayscale`,
-        text: 'Bridge'
+        text: 'Omar'
       },
       {
         image: `https://picsum.photos/seed/2/800/600?grayscale`,
-        text: 'Desk Setup'
+        text: 'Fahreza'
       },
       {
         image: `https://picsum.photos/seed/3/800/600?grayscale`,
-        text: 'Waterfall'
+        text: 'Kyla'
       },
       {
         image: `https://picsum.photos/seed/4/800/600?grayscale`,
-        text: 'Strawberries'
+        text: 'Linda'
       },
       {
         image: `https://picsum.photos/seed/5/800/600?grayscale`,
-        text: 'Deep Diving'
+        text: 'Whisnu'
       },
       {
         image: `https://picsum.photos/seed/16/800/600?grayscale`,
-        text: 'Train Track'
+        text: 'Dara'
       },
       {
         image: `https://picsum.photos/seed/17/800/600?grayscale`,
-        text: 'Santorini'
+        text: 'Andhika'
       },
       {
         image: `https://picsum.photos/seed/8/800/600?grayscale`,
-        text: 'Blurry Lights'
+        text: 'Leysa'
       },
       {
         image: `https://picsum.photos/seed/9/800/600?grayscale`,
-        text: 'New York'
-      },
-      {
-        image: `https://picsum.photos/seed/10/800/600?grayscale`,
-        text: 'Good Boy'
-      },
-      {
-        image: `https://picsum.photos/seed/21/800/600?grayscale`,
-        text: 'Coastline'
-      },
-      {
-        image: `https://picsum.photos/seed/12/800/600?grayscale`,
-        text: 'Palm Trees'
+        text: 'Laili'
       }
     ];
     const galleryItems = items && items.length ? items : defaultItems;
@@ -658,28 +646,53 @@ interface CircularGalleryProps {
 
 export default function CircularGallery({
   items,
-  bend = 1,
-  textColor = '#ffffff',
+  bend = 3,
+  textColor = "#ffffff",
   borderRadius = 0.05,
-  font = 'bold 30px Figtree',
+  font = "bold 30px Figtree",
   scrollSpeed = 2,
-  scrollEase = 0.05
+  scrollEase = 0.05,
 }: CircularGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (!containerRef.current) return;
+
+    const isMobile = window.innerWidth < 768;
+
     const app = new App(containerRef.current, {
       items,
-      bend,
+      bend: isMobile ? bend * 0.6 : bend,
       textColor,
       borderRadius,
       font,
-      scrollSpeed,
-      scrollEase
+      scrollSpeed: isMobile ? scrollSpeed * 0.6 : scrollSpeed, 
+      scrollEase,
     });
+
+    const originalResize = app.onResize.bind(app);
+    app.onResize = () => {
+      originalResize();
+      if (isMobile) {
+        app.medias.forEach((media) => {
+          media.plane.scale.multiply(0.75);
+          media.title.mesh.scale.multiply(0.75);
+          media.plane.position.y -= 0.2;
+        });
+      }
+    };
+
+    app.onResize();
+
     return () => {
       app.destroy();
     };
   }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
-  return <div className="w-full h-full overflow-hidden cursor-grab active:cursor-grabbing" ref={containerRef} />;
+
+  return (
+    <div
+      className="w-full h-full overflow-hidden cursor-grab active:cursor-grabbing"
+      ref={containerRef}
+    />
+  );
 }
