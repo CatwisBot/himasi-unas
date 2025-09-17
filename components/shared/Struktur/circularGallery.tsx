@@ -5,9 +5,9 @@ import { useEffect, useRef } from "react";
 
 type GL = Renderer['gl'];
 
-function debounce<T extends (...args: any[]) => void>(func: T, wait: number) {
+function debounce<T extends (...args: unknown[]) => void>(func: T, wait: number) {
   let timeout: number;
-  return function (this: any, ...args: Parameters<T>) {
+  return function (this: unknown, ...args: Parameters<T>) {
     window.clearTimeout(timeout);
     timeout = window.setTimeout(() => func.apply(this, args), wait);
   };
@@ -17,11 +17,11 @@ function lerp(p1: number, p2: number, t: number): number {
   return p1 + (p2 - p1) * t;
 }
 
-function autoBind(instance: any): void {
+function autoBind(instance: object): void {
   const proto = Object.getPrototypeOf(instance);
   Object.getOwnPropertyNames(proto).forEach(key => {
-    if (key !== 'constructor' && typeof instance[key] === 'function') {
-      instance[key] = instance[key].bind(instance);
+    if (key !== 'constructor' && typeof (instance as Record<string, unknown>)[key] === 'function') {
+      (instance as Record<string, unknown>)[key] = ((instance as Record<string, unknown>)[key] as (...args: unknown[]) => unknown).bind(instance);
     }
   });
 }
@@ -395,7 +395,7 @@ class App {
     last: number;
     position?: number;
   };
-  onCheckDebounce: (...args: any[]) => void;
+  onCheckDebounce: () => void;
   renderer!: Renderer;
   gl!: GL;
   camera!: Camera;
@@ -480,39 +480,39 @@ class App {
   ) {
     const defaultItems = [
       {
-        image: `https://picsum.photos/seed/1/800/600?grayscale`,
+        image: "https://picsum.photos/seed/1/800/600?grayscale",
         text: 'Omar'
       },
       {
-        image: `https://picsum.photos/seed/2/800/600?grayscale`,
+        image: "https://picsum.photos/seed/2/800/600?grayscale",
         text: 'Fahreza'
       },
       {
-        image: `https://picsum.photos/seed/3/800/600?grayscale`,
+        image: "https://picsum.photos/seed/3/800/600?grayscale",
         text: 'Kyla'
       },
       {
-        image: `https://picsum.photos/seed/4/800/600?grayscale`,
+        image: "https://picsum.photos/seed/4/800/600?grayscale",
         text: 'Linda'
       },
       {
-        image: `https://picsum.photos/seed/5/800/600?grayscale`,
+        image: "https://picsum.photos/seed/5/800/600?grayscale",
         text: 'Whisnu'
       },
       {
-        image: `https://picsum.photos/seed/16/800/600?grayscale`,
+        image: "https://picsum.photos/seed/16/800/600?grayscale",
         text: 'Dara'
       },
       {
-        image: `https://picsum.photos/seed/17/800/600?grayscale`,
+        image: "https://picsum.photos/seed/17/800/600?grayscale",
         text: 'Andhika'
       },
       {
-        image: `https://picsum.photos/seed/8/800/600?grayscale`,
+        image: "https://picsum.photos/seed/8/800/600?grayscale",
         text: 'Leysa'
       },
       {
-        image: `https://picsum.photos/seed/9/800/600?grayscale`,
+        image: "https://picsum.photos/seed/9/800/600?grayscale",
         text: 'Laili'
       }
     ];
@@ -558,7 +558,7 @@ class App {
 
   onWheel(e: Event) {
     const wheelEvent = e as WheelEvent;
-    const delta = wheelEvent.deltaY || (wheelEvent as any).wheelDelta || (wheelEvent as any).detail;
+    const delta = wheelEvent.deltaY || (wheelEvent as WheelEvent & { wheelDelta?: number; detail?: number }).wheelDelta || (wheelEvent as WheelEvent & { wheelDelta?: number; detail?: number }).detail;
     this.scroll.target += (delta > 0 ? this.scrollSpeed : -this.scrollSpeed) * 0.2;
     this.onCheckDebounce();
   }
