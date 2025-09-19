@@ -23,14 +23,18 @@ export default function Carousel() {
             key={index}
             className="flex-shrink-0 w-[150px] text-center px-2"
           >
-            <Image
-              src={item.src}
-              alt={item.caption}
-              width={150}
-              height={100}
-              className="rounded-2xl object-cover"
-            />
-            <p className="relative -top-5 backdrop-blur-sm bg-black/30 text-sm font-semibold">{item.caption}</p>
+            <div className="relative">
+              <Image
+                src={item.src}
+                alt={item.caption}
+                width={150}
+                height={100}
+                className="rounded-2xl object-cover"
+              />
+              <p className="absolute bottom-2 left-1/2 -translate-x-1/2 text-white text-sm font-semibold bg-black/50 px-2 py-1 rounded">
+                {item.caption}
+              </p>
+            </div>
           </div>
         ))}
       </div>
