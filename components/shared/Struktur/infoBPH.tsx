@@ -5,8 +5,17 @@ import Link from "next/link";
 import { useState } from "react";
 import { leaders } from "@/constants/Struktur/dataBPH";
 import { Instagram } from "lucide-react";
+import type { StaticImageData } from "next/image";
 
 const roles = ["Ketua Himpunan", "Wakil Himpunan", "Bendahara", "Sekretaris"]
+
+type Leader = {
+  image: string | StaticImageData;
+  name: string;
+  role: string;
+  description: string;
+  instagram: string;
+};
 
 export default function Leaders() {
   const [selectedRole, setSelectedRole] = useState("Ketua Himpunan")
@@ -23,7 +32,7 @@ export default function Leaders() {
     Sekretaris: sekretaris,
   }
 
-  const LeaderCard = ({ leader, alignRight = false }: { leader: any; alignRight?: boolean }) => {
+  const LeaderCard = ({ leader, alignRight = false }: { leader: Leader | undefined; alignRight?: boolean }) => {
     if (!leader) return null
     return (
       <div
