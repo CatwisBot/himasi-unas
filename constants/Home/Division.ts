@@ -1,4 +1,4 @@
-import { Division } from "@/lib/type/tDivision";
+import { Division } from "@/lib/type/Home/tDivision";
 import Laptop from "@/public/icon/Home/Laptop.png";
 
 export const divisions: Division[] = [
