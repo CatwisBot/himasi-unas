@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { committee } from "@/constants/Struktur/dataCommittee";
+import { committee } from "@/constants/Struktur/dataSlideGallery";
 
 export default function SlideGallery() {
   return (
