@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Division } from "@/lib/type/tDivision";
+import { Division } from "@/lib/type/Home/tDivision";
 
 export default function Card({ title, image }: Division) {
   return (
