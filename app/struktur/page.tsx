@@ -1,11 +1,12 @@
 import CircularGallery from "@/components/shared/Struktur/circularGallery";
 import SlideGallery from "@/components/shared/Struktur/slideGalleryMobile";
+import Kahim from "@/components/shared/Struktur/infoBPH";
 
 export default function GaleriPage() {
     return(
     <main>
         <div className="bg-[#FFE8DB]">
-         <div className="flex justify-center font-bold text-center text-xl md:text-4xl uppercase pt-10 max-w-2xl mx-auto text-black px-4">
+         <div className="flex justify-center font-bold text-center text-xl md:text-4xl uppercase py-10 max-w-2xl mx-auto text-black px-4">
             <h2>Anggota Himpunan Mahasiswa Sistem Informasi</h2>
          </div>
         </div>
@@ -15,7 +16,9 @@ export default function GaleriPage() {
         <div className="bg-[linear-gradient(to_bottom,#FFE8DB_70%,#E4C6BE_80%,#994555_85%,#732E39_90%,#4B061A_100%)] md:hidden">
             <SlideGallery />
         </div>
-        <div className="min-h-screen bg-[#4B061A]"></div>
+        <div className="bg-[#4B061A]">
+            <Kahim />
+        </div>
     </main>
     );
 }
