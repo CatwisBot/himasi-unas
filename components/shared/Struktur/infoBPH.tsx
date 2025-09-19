@@ -44,13 +44,13 @@ export default function Leaders() {
           <h2 className="text-xl font-bold mb-1">{leader.role}</h2>
           <h3 className="text-lg font-semibold">{leader.name}</h3>
           <p className="mt-2 text-sm text-gray-200 max-w-lg">{leader.description}</p>
-          <a
+          <Link
             href={leader.instagram}
             target="_blank"
             className="inline-block mt-3 text-gray-200 hover:text-pink-500"
           >
             <Instagram size={20} className={alignRight ? "mx-auto md:ml-auto" : ""} />
-          </a>
+          </Link>
         </div>
       </div>
     )
