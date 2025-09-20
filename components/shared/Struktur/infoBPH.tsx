@@ -51,7 +51,7 @@ type Leader = {
   instagram: string;
 };
 
-export default function Leaders() {
+export default function BPH() {
   const [selectedRole, setSelectedRole] = useState("Ketua Himpunan")
   const [isAnimating, setIsAnimating] = useState(false)
   const [colorTransition, setColorTransition] = useState(false)
@@ -146,7 +146,7 @@ export default function Leaders() {
 
   return (
     <div className="max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto px-4 py-10">
-      <div className="border-t-2 border-white" />
+      <div className="border-t-3 border-white" />
       <div className="flex justify-center font-bold text-center text-xl md:text-4xl uppercase py-5 md:py-10 text-white">
         <h2>Badan Pengurus Harian</h2>
       </div>
@@ -177,7 +177,7 @@ export default function Leaders() {
         })}
       </div>
 
-      <div className={`md:hidden border-b-2 transition-colors duration-700 ease-in-out pb-5 min-h-[400px] flex items-center justify-center ${
+      <div className={`md:hidden border-b-3 transition-colors duration-700 ease-in-out pb-5 min-h-[400px] flex items-center justify-center ${
         colorTransition ? 'border-white/50' : 'border-white'
       }`}>
         <div className={`w-full transition-all duration-500 ease-in-out ${
@@ -192,7 +192,7 @@ export default function Leaders() {
         </div>
       </div>
 
-      <div className="hidden md:block border-b-2 border-white pb-5">
+      <div className="hidden md:block border-b-3 border-white pb-5">
         <LeaderCard leader={ketua} alignRight={false} />
         <LeaderCard leader={wakil} alignRight={true} />
         <LeaderCard leader={bendahara} alignRight={false} />
