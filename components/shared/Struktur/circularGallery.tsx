@@ -270,7 +270,6 @@ class Media {
           
           float d = roundedBoxSDF(vUv - 0.5, vec2(0.5 - uBorderRadius), uBorderRadius);
           
-          // Smooth antialiasing for edges
           float edgeSmooth = 0.002;
           float alpha = 1.0 - smoothstep(-edgeSmooth, edgeSmooth, d);
           
@@ -288,13 +287,9 @@ class Media {
       transparent: true
     });
     
-    // Create native Image object for WebGL texture creation
-    // Next.js Image components above handle preloading and optimization,
-    // but WebGL requires direct access to image data via native Image constructor
     const img = new window.Image();
     img.crossOrigin = 'anonymous';
     
-    // For Next.js, ensure proper path handling for both static and dynamic images
     const imageSrc = this.image.startsWith('/') ? this.image : `/${this.image}`;
     img.src = imageSrc;
     
@@ -303,16 +298,14 @@ class Media {
       this.program.uniforms.uImageSizes.value = [img.naturalWidth, img.naturalHeight];
     };
     
-    // Handle image loading errors gracefully
     img.onerror = () => {
       console.warn(`Failed to load image: ${imageSrc}`);
-      // Create a fallback colored canvas if image fails to load
       const canvas = document.createElement('canvas');
       canvas.width = 800;
       canvas.height = 600;
       const ctx = canvas.getContext('2d');
       if (ctx) {
-        ctx.fillStyle = '#4B061A'; // Fallback color matching your theme
+        ctx.fillStyle = '#4B061A'; 
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         texture.image = canvas;
         this.program.uniforms.uImageSizes.value = [canvas.width, canvas.height];
@@ -714,7 +707,6 @@ export default function CircularGallery({
     };
   }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
 
-  // Get the actual items that will be used (either passed items or default items)
   const defaultItems = [
     { image: "/image/Struktur/Deadpool.png", text: 'Omar' },
     { image: "/image/Struktur/Deadpool.png", text: 'Fahreza' },
@@ -730,7 +722,6 @@ export default function CircularGallery({
 
   return (
     <>
-      {/* Next.js Images for preloading and optimization - hidden from view */}
       <div className="hidden">
         {galleryItems.map((item, index) => (
           <NextImage
@@ -739,15 +730,13 @@ export default function CircularGallery({
             alt={item.text}
             width={800}
             height={600}
-            priority={index < 3} // Prioritize first 3 images
+            priority={index < 3}
             onLoad={() => {
-              // Optional: You can add a callback here when images are loaded
             }}
           />
         ))}
       </div>
       
-      {/* WebGL Canvas Container */}
       <div
         className="w-full h-full overflow-hidden cursor-grab active:cursor-grabbing"
         ref={containerRef}
