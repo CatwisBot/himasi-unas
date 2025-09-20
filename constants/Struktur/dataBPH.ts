@@ -1,10 +1,11 @@
 import { Leader } from "@/lib/type/Struktur/tDataBPH";
+import DeadpoolImage from "@/public/image/Struktur/Deadpool.png";
 
 export const leaders: Leader[] = [
   {
     id: "ketua-1",
     name: "Omar Nur Rahmatsyah",
-    image: "/image/Struktur/Deadpool.png",
+    image: DeadpoolImage,
     role: "Ketua Himpunan",
     instagram: "https://instagram.com/",
     description:
@@ -13,7 +14,7 @@ export const leaders: Leader[] = [
   {
     id: "wakil-1",
     name: "Muhammad Fahreza Situmorang",
-    image: "/image/Struktur/Deadpool.png",
+    image: DeadpoolImage,
     role: "Wakil Himpunan",
     instagram: "https://instagram.com/",
     description:
@@ -22,7 +23,7 @@ export const leaders: Leader[] = [
   {
     id: "bendahara-1",
     name: "Kyla Nazwara Sofyan",
-    image: "/image/Struktur/Deadpool.png",
+    image: DeadpoolImage,
     role: "Bendahara",
     instagram: "https://instagram.com/",
     description:
@@ -31,10 +32,10 @@ export const leaders: Leader[] = [
   {
     id: "sekretaris-1",
     name: "Linda Isnaeni",
-    image: "/image/Struktur/Deadpool.png",
+    image: DeadpoolImage,
     role: "Sekretaris",
     instagram: "https://instagram.com/",
     description:
       "Sebagai Wakil Himpunan, mendampingi ketua dalam pengambilan keputusan, memastikan program berjalan, serta menjadi penghubung antar anggota.",
   },
-]
+];
