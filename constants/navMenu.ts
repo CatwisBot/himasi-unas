@@ -17,6 +17,10 @@ export const navMenu = [
     title: "Struktur",
   },
   {
+    path: "/kerja-sama",
+    title: "Kerja Sama",
+  },
+  {
     path: "/hubungi-kami",
     title: "Hubungi Kami",
   },
