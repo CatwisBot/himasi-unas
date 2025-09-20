@@ -49,22 +49,27 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
-                  <Link href="/about" className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full">
+                  <Link href="/kegiatan" className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full">
                     Kegiatan
                   </Link>
                 </li>
                 <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
-                  <Link href="/events" className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full">
+                  <Link href="/galeri" className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full">
                     Galeri
                   </Link>
                 </li>
                 <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
-                  <Link href="/contact" className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full">
+                  <Link href="/struktur" className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full">
                     Struktur
                   </Link>
                 </li>
                 <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
-                  <Link href="/contact" className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full">
+                  <Link href="/" className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full">
+                    Kerja Sama
+                  </Link>
+                </li>
+                <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
+                  <Link href="/hubungi-kami" className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full">
                     Hubungi
                   </Link>
                 </li>
@@ -75,7 +80,7 @@ export default function Footer() {
               <ul className="space-y-1 text-sm">
                 <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
                   <Link
-                    href="https://instagram.com/"
+                    href="https://instagram.com/himasi.unas1949"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full"
@@ -85,7 +90,17 @@ export default function Footer() {
                 </li>
                 <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
                   <Link
-                    href="https://www.tiktok.com/"
+                    href="https://instagram.com/himasi.storee"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full"
+                  >
+                    Toko
+                  </Link>
+                </li>
+                <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
+                  <Link
+                    href="https://www.tiktok.com/@himasi.unas1949"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full"
@@ -95,7 +110,27 @@ export default function Footer() {
                 </li>
                 <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
                   <Link
-                    href="mailto:himasi@unas.ac.id"
+                    href="https://youtube.com/@himasiunas7426"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full"
+                  >
+                    Youtube
+                  </Link>
+                </li>
+                <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
+                  <Link
+                    href="https://www.spotify.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full"
+                  >
+                    Spotify
+                  </Link>
+                </li>
+                <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
+                  <Link
+                    href="mailto:himasiunas@gmail.com"
                     className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full"
                   >
                     Email
