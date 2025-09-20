@@ -2,6 +2,7 @@
 
 import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from "ogl";
 import { useEffect, useRef } from "react";
+import NextImage from "next/image";
 
 type GL = Renderer['gl'];
 
@@ -34,7 +35,7 @@ function getFontSize(font: string): number {
 function createTextTexture(
   gl: GL,
   text: string,
-  font: string = 'bold 30px monospace',
+  font: string = 'bold 30px Poppins',
   color: string = 'black'
 ): { texture: Texture; width: number; height: number } {
   const canvas = document.createElement('canvas');
@@ -80,7 +81,7 @@ class Title {
   font: string;
   mesh!: Mesh;
 
-  constructor({ gl, plane, renderer, text, textColor = '#545050', font = '30px sans-serif' }: TitleProps) {
+  constructor({ gl, plane, renderer, text, textColor = '#545050', font = '30px Poppins' }: TitleProps) {
     autoBind(this);
     this.gl = gl;
     this.plane = plane;
@@ -286,12 +287,36 @@ class Media {
       },
       transparent: true
     });
-    const img = new Image();
+    
+    // Create native Image object for WebGL texture creation
+    // Next.js Image components above handle preloading and optimization,
+    // but WebGL requires direct access to image data via native Image constructor
+    const img = new window.Image();
     img.crossOrigin = 'anonymous';
-    img.src = this.image;
+    
+    // For Next.js, ensure proper path handling for both static and dynamic images
+    const imageSrc = this.image.startsWith('/') ? this.image : `/${this.image}`;
+    img.src = imageSrc;
+    
     img.onload = () => {
       texture.image = img;
       this.program.uniforms.uImageSizes.value = [img.naturalWidth, img.naturalHeight];
+    };
+    
+    // Handle image loading errors gracefully
+    img.onerror = () => {
+      console.warn(`Failed to load image: ${imageSrc}`);
+      // Create a fallback colored canvas if image fails to load
+      const canvas = document.createElement('canvas');
+      canvas.width = 800;
+      canvas.height = 600;
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.fillStyle = '#4B061A'; // Fallback color matching your theme
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        texture.image = canvas;
+        this.program.uniforms.uImageSizes.value = [canvas.width, canvas.height];
+      }
     };
   }
 
@@ -423,7 +448,7 @@ class App {
       bend = 1,
       textColor = '#ffffff',
       borderRadius = 0,
-      font = 'bold 30px Figtree',
+      font = 'bold 30px Poppins',
       scrollSpeed = 2,
       scrollEase = 0.05
     }: AppConfig
@@ -480,39 +505,39 @@ class App {
   ) {
     const defaultItems = [
       {
-        image: "https://picsum.photos/seed/1/800/600?grayscale",
+        image: "/image/Struktur/Deadpool.png",
         text: 'Omar'
       },
       {
-        image: "https://picsum.photos/seed/2/800/600?grayscale",
+        image: "/image/Struktur/Deadpool.png",
         text: 'Fahreza'
       },
       {
-        image: "https://picsum.photos/seed/3/800/600?grayscale",
+        image: "/image/Struktur/Deadpool.png",
         text: 'Kyla'
       },
       {
-        image: "https://picsum.photos/seed/4/800/600?grayscale",
+        image: "/image/Struktur/Deadpool.png",
         text: 'Linda'
       },
       {
-        image: "https://picsum.photos/seed/5/800/600?grayscale",
+        image: "/image/Struktur/Deadpool.png",
         text: 'Whisnu'
       },
       {
-        image: "https://picsum.photos/seed/16/800/600?grayscale",
+        image: "/image/Struktur/Deadpool.png",
         text: 'Dara'
       },
       {
-        image: "https://picsum.photos/seed/17/800/600?grayscale",
+        image: "/image/Struktur/Deadpool.png",
         text: 'Andhika'
       },
       {
-        image: "https://picsum.photos/seed/8/800/600?grayscale",
+        image: "/image/Struktur/Deadpool.png",
         text: 'Leysa'
       },
       {
-        image: "https://picsum.photos/seed/9/800/600?grayscale",
+        image: "/image/Struktur/Deadpool.png",
         text: 'Laili'
       }
     ];
@@ -649,7 +674,7 @@ export default function CircularGallery({
   bend = 3,
   textColor = "#ffffff",
   borderRadius = 0.05,
-  font = "bold 30px Figtree",
+  font = "bold 30px Poppins",
   scrollSpeed = 2,
   scrollEase = 0.05,
 }: CircularGalleryProps) {
@@ -689,10 +714,44 @@ export default function CircularGallery({
     };
   }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
 
+  // Get the actual items that will be used (either passed items or default items)
+  const defaultItems = [
+    { image: "/image/Struktur/Deadpool.png", text: 'Omar' },
+    { image: "/image/Struktur/Deadpool.png", text: 'Fahreza' },
+    { image: "/image/Struktur/Deadpool.png", text: 'Kyla' },
+    { image: "/image/Struktur/Deadpool.png", text: 'Linda' },
+    { image: "/image/Struktur/Deadpool.png", text: 'Whisnu' },
+    { image: "/image/Struktur/Deadpool.png", text: 'Dara' },
+    { image: "/image/Struktur/Deadpool.png", text: 'Andhika' },
+    { image: "/image/Struktur/Deadpool.png", text: 'Leysa' },
+    { image: "/image/Struktur/Deadpool.png", text: 'Laili' }
+  ];
+  const galleryItems = items && items.length ? items : defaultItems;
+
   return (
-    <div
-      className="w-full h-full overflow-hidden cursor-grab active:cursor-grabbing"
-      ref={containerRef}
-    />
+    <>
+      {/* Next.js Images for preloading and optimization - hidden from view */}
+      <div className="hidden">
+        {galleryItems.map((item, index) => (
+          <NextImage
+            key={`preload-${index}`}
+            src={item.image}
+            alt={item.text}
+            width={800}
+            height={600}
+            priority={index < 3} // Prioritize first 3 images
+            onLoad={() => {
+              // Optional: You can add a callback here when images are loaded
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* WebGL Canvas Container */}
+      <div
+        className="w-full h-full overflow-hidden cursor-grab active:cursor-grabbing"
+        ref={containerRef}
+      />
+    </>
   );
 }
