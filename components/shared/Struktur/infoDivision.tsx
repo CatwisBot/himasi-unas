@@ -69,8 +69,8 @@ export default function Division() {
                     animation: fadeInUp 0.6s ease-out;
                 }
             `}</style>
-            <main className="bg-[#4B061A] py-10">
-            <div className="flex justify-center font-bold text-center text-xl md:text-4xl uppercase text-white pb-10">
+            <main className="bg-[#4B061A] pb-20">
+            <div className="flex justify-center font-bold text-center text-xl md:text-4xl uppercase text-white pb-5">
                 Divisi Himpunan
             </div>
             
@@ -91,7 +91,7 @@ export default function Division() {
             </div>
 
             {currentDivision && (
-                <div className="px-4 md:px-8 lg:px-16">
+                <div className="max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto px-4">
                     <div className="text-center mb-6">
                         <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                             {currentDivision.name}
@@ -116,11 +116,11 @@ export default function Division() {
                     </div>
 
                     <div className="mt-8">
-                        <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 transition-opacity duration-300 ${isLoading ? 'opacity-50' : 'opacity-100'}`}>
+                        <div className={`flex flex-wrap justify-center gap-4 md:gap-6 transition-opacity duration-300 ${isLoading ? 'opacity-50' : 'opacity-100'}`}>
                             {currentDivision.members.map((member, index) => (
                                 <div 
                                     key={member.id}
-                                    className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-64 md:h-72 lg:h-80 animate-fadeInUp"
+                                    className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-64 md:h-72 lg:h-80 animate-fadeInUp w-[calc(50%-8px)] md:w-[calc(33.333%-16px)] lg:w-[calc(25%-18px)]"
                                     style={{
                                         animationDelay: `${index * 100}ms`,
                                         animationFillMode: 'both'
