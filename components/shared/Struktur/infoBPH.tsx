@@ -40,7 +40,7 @@ export default function Leaders() {
           alignRight ? "md:flex-row-reverse" : "md:flex-row"
         } items-center md:items-start gap-6 pt-8`}
       >
-        <div className="relative w-40 h-60">
+        <div className="relative w-50 h-60">
           <Image
             src={leader.image}
             alt={leader.name}
@@ -66,8 +66,9 @@ export default function Leaders() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 pt-20 pb-15">
-      <div className="flex justify-center font-bold text-center text-xl md:text-4xl uppercase py-5 md:py-10 max-w-2xl mx-auto text-white px-4 border-t-2 border-white">
+    <div className="max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto px-4 pt-20 pb-15">
+      <div className="border-t-2 border-white" />
+      <div className="flex justify-center font-bold text-center text-xl md:text-4xl uppercase py-5 md:py-10 text-white">
         <h2>Badan Pengurus Harian</h2>
       </div>
       <div className="flex flex-wrap md:hidden justify-center gap-3 mb-6">
