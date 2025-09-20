@@ -27,7 +27,7 @@ export const leaders: Leader[] = [
     role: "Bendahara",
     instagram: "https://instagram.com/",
     description:
-      "Sebagai Wakil Himpunan, mendampingi ketua dalam pengambilan keputusan, memastikan program berjalan, serta menjadi penghubung antar anggota.",
+      "Sebagai Bendahara, bertanggung jawab mengelola keuangan organisasi, membuat laporan keuangan, serta mengawasi alokasi dana untuk setiap kegiatan.",
   },
   {
     id: "sekretaris-1",
@@ -36,6 +36,6 @@ export const leaders: Leader[] = [
     role: "Sekretaris",
     instagram: "https://instagram.com/",
     description:
-      "Sebagai Wakil Himpunan, mendampingi ketua dalam pengambilan keputusan, memastikan program berjalan, serta menjadi penghubung antar anggota.",
+      "Sebagai Sekretaris, bertugas mencatat rapat, mengelola administrasi organisasi, serta memastikan komunikasi internal berjalan lancar.",
   },
 ];
