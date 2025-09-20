@@ -1,6 +1,6 @@
 import CircularGallery from "@/components/shared/Struktur/circularGallery";
 import SlideGallery from "@/components/shared/Struktur/slideGalleryMobile";
-import Kahim from "@/components/shared/Struktur/infoBPH";
+import BPH from "@/components/shared/Struktur/infoBPH";
 
 export default function GaleriPage() {
     return(
@@ -13,11 +13,11 @@ export default function GaleriPage() {
         <div className="bg-[linear-gradient(to_bottom,#FFE8DB_70%,#E4C6BE_80%,#994555_85%,#732E39_90%,#4B061A_100%)] hidden md:block" style={{ height: '600px', position: 'relative' }}>
             <CircularGallery bend={3} textColor="#ffffffff" borderRadius={0.05} scrollEase={0.02}/>
         </div>
-        <div className="bg-[linear-gradient(to_bottom,#FFE8DB_70%,#E4C6BE_80%,#994555_85%,#732E39_90%,#4B061A_100%)] md:hidden">
+        <div className="bg-[linear-gradient(to_bottom,#FFE8DB_70%,#E4C6BE_80%,#994555_85%,#732E39_90%,#4B061A_100%)] md:hidden pb-10">
             <SlideGallery />
         </div>
         <div className="bg-[#4B061A]">
-            <Kahim />
+            <BPH />
         </div>
     </main>
     );
