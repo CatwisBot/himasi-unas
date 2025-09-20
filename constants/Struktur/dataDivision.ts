@@ -12,7 +12,7 @@ export const divisions: Division[] = [
         id: "rd-1",
         name: "Raden Whisnu Arya Nugraha",
         image: DeadpoolImage,
-        role: "Ketua Divisi Research and Development",
+        role: "Ketua Divisi",
         instagram: "https://instagram.com/",
       },
       {
@@ -48,7 +48,7 @@ export const divisions: Division[] = [
         id: "cm-1",
         name: "Azzahra Dara Febrianti",
         image: DeadpoolImage,
-        role: "Ketua Divisi Creative Media",
+        role: "Ketua Divisi",
         instagram: "https://instagram.com/",
       },
       {
@@ -84,7 +84,7 @@ export const divisions: Division[] = [
         id: "pr-1",
         name: "Leysa Regita Parhusip",
         image: DeadpoolImage,
-        role: "Ketua Divisi Public Relation",
+        role: "Ketua Divisi",
         instagram: "https://instagram.com/",
       },
       {
@@ -120,7 +120,7 @@ export const divisions: Division[] = [
         id: "htd-1",
         name: "Andhika Pratama",
         image: DeadpoolImage,
-        role: "Ketua Divisi Human Talent Development",
+        role: "Ketua Divisi",
         instagram: "https://instagram.com/",
       },
       {
@@ -156,7 +156,7 @@ export const divisions: Division[] = [
         id: "ent-1",
         name: "Laili Salsabila",
         image: DeadpoolImage,
-        role: "Ketua Divisi Entrepreneurship",
+        role: "Ketua Divisi",
         instagram: "https://instagram.com/",
       },
       {
