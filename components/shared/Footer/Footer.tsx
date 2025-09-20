@@ -43,28 +43,28 @@ export default function Footer() {
             <div>
               <h4 className="font-semibold mb-2">Navigasi</h4>
               <ul className="space-y-1 text-sm">
-                <li>
-                  <Link href="/" className="hover:underline">
+                <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
+                  <Link href="/" className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full">
                     Beranda
                   </Link>
                 </li>
-                <li>
-                  <Link href="/about" className="hover:underline">
+                <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
+                  <Link href="/about" className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full">
                     Kegiatan
                   </Link>
                 </li>
-                <li>
-                  <Link href="/events" className="hover:underline">
+                <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
+                  <Link href="/events" className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full">
                     Galeri
                   </Link>
                 </li>
-                <li>
-                  <Link href="/contact" className="hover:underline">
+                <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
+                  <Link href="/contact" className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full">
                     Struktur
                   </Link>
                 </li>
-                <li>
-                  <Link href="/contact" className="hover:underline">
+                <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
+                  <Link href="/contact" className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full">
                     Hubungi
                   </Link>
                 </li>
@@ -73,30 +73,30 @@ export default function Footer() {
             <div>
               <h4 className="font-semibold mb-2">Sosial Media</h4>
               <ul className="space-y-1 text-sm">
-                <li>
+                <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
                   <Link
                     href="https://instagram.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline"
+                    className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full"
                   >
                     Instagram
                   </Link>
                 </li>
-                <li>
+                <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
                   <Link
                     href="https://www.tiktok.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline"
+                    className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full"
                   >
                     Tiktok
                   </Link>
                 </li>
-                <li>
+                <li className="transform transition-all duration-300 hover:translate-x-2 hover:scale-105">
                   <Link
                     href="mailto:himasi@unas.ac.id"
-                    className="hover:underline"
+                    className="relative inline-block py-1 px-2 rounded-md transition-all duration-300 hover:bg-[#4B061A]/10 hover:text-[#4B061A] hover:shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-[#4B061A] before:transition-all before:duration-300 hover:before:w-full"
                   >
                     Email
                   </Link>
