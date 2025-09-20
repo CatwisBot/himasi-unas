@@ -21,25 +21,31 @@ export default function Introduction() {
             </div>
            </div>
 
-           <div className="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto px-8 md:px-4 text-justify md:text-center text-white text-xs md:text-sm lg:text-base xl:text-lg leading-relaxed pt-4 pb-8 md:pb-12 font-bold">
-            <p className="hidden lg:block">Selamat datang di Website HIMASI, Himpunan Mahasiswa Sistem Informasi!<br />Organisasi mahasiswa yang berdedikasi untuk mengembangkan potensi akademik, profesional, dan sosial di<br />bidang Sistem Informasi. Dengan berbagai kegiatan seperti seminar, pelatihan, hingga proyek kolaboratif, kami<br />bertujuan untuk menciptakan lingkungan belajar yang inspiratif sekaligus membangun jejaring yang solid di<br />antara mahasiswa.</p>
-            <p className="lg:hidden" style={{ textAlignLast: "center" }}>Selamat datang di Website HIMASI, Himpunan Mahasiswa Sistem Informasi! Organisasi mahasiswa yang berdedikasi untuk mengembangkan potensi akademik, profesional, dan sosial di bidang Sistem Informasi. Dengan berbagai kegiatan seperti seminar, pelatihan, hingga proyek kolaboratif, kami bertujuan untuk menciptakan lingkungan belajar yang inspiratif sekaligus membangun jejaring yang solid di antara mahasiswa.</p>
+          {/* Deskripsi */}
+           <div className="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto px-8 md:px-4 text-justify md:text-center text-white text-xs md:text-sm lg:text-base xl:text-lg leading-relaxed pt-4 pb-8 md:pb-12 font-bold relative">
+            <div className="absolute top-20 -right-16 w-15 h-15 bg-[#FFE8DB] opacity-80 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '0s', animationDuration: '3s' }}></div>
+            
+            <p className="hidden lg:block relative z-10">Selamat datang di Website HIMASI, Himpunan Mahasiswa Sistem Informasi!<br />Organisasi mahasiswa yang berdedikasi untuk mengembangkan potensi akademik, profesional, dan sosial di<br />bidang Sistem Informasi. Dengan berbagai kegiatan seperti seminar, pelatihan, hingga proyek kolaboratif, kami<br />bertujuan untuk menciptakan lingkungan belajar yang inspiratif sekaligus membangun jejaring yang solid di<br />antara mahasiswa.</p>
+            <p className="lg:hidden relative z-10" style={{ textAlignLast: "center" }}>Selamat datang di Website HIMASI, Himpunan Mahasiswa Sistem Informasi! Organisasi mahasiswa yang berdedikasi untuk mengembangkan potensi akademik, profesional, dan sosial di bidang Sistem Informasi. Dengan berbagai kegiatan seperti seminar, pelatihan, hingga proyek kolaboratif, kami bertujuan untuk menciptakan lingkungan belajar yang inspiratif sekaligus membangun jejaring yang solid di antara mahasiswa.</p>
            </div>
 
           <div className="flex justify-center items-center pb-6">
             <p className="text-xs md:text-sm lg:text-base xl:text-lg text-white font-bold whitespace-pre">34 Anggota   ━━━   5 Divisi</p>
           </div>
 
-          <div className="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-7xl flex justify-center mx-auto px-4 pb-8">
-            <div className="flex flex-wrap justify-center gap-6">
+          <div className="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-7xl flex justify-center mx-auto px-4 pb-8 relative">
+            <div className="absolute -bottom-15 left-20 w-32 h-32 bg-[#FFE8DB] opacity-80 rounded-full blur-3xl animate-bounce" style={{ animationDelay: '1s', animationDuration: '4s' }}></div>
+            <div className="absolute -bottom-15 right-20 w-32 h-32 bg-[#FFE8DB] opacity-80 rounded-full blur-3xl animate-bounce" style={{ animationDelay: '1s', animationDuration: '5s' }}></div>
+            
+            <div className="flex flex-wrap justify-center gap-6 relative z-10">
               {divisions.map((division) => (
                 <Card key={division.id} {...division} />
               ))}
             </div>
           </div>
 
-          <div className="w-full flex justify-center pb-20">
-            <Link href="/struktur" className="bg-[#FFE8DB] text-xs md:text-sm lg:text-base xl:text-lg text-black font-bold px-4 md:px-8 py-3 rounded-xl hover:rotate-1 hover:bg-[#E4C6BE] transition">
+          <div className="w-full flex justify-center pb-20 relative">
+            <Link href="/struktur" className="bg-[#FFE8DB] text-xs md:text-sm lg:text-base xl:text-lg text-black font-bold px-4 md:px-8 py-3 rounded-xl hover:rotate-1 hover:bg-[#E4C6BE] transition relative z-10">
               Info Lebih Lanjut
             </Link>
           </div>
