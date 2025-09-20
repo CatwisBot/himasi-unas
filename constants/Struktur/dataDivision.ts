@@ -1,6 +1,41 @@
-import { Division } from "@/lib/type/Struktur/tDivisionDetail";
+import { Division } from "@/lib/type/Struktur/tDataDivision";
 
 export const divisions: Division[] = [
+  {
+    id: "research-and-development",
+    name: "Research and Development",
+    description: "Divisi Research and Development (R&D) bertugas sebagai pendorong inovasi dan solusi teknologi HIMASI. Dengan bergerak melampui sekadar eksplorasi, divisi ini mempraktikkan pendekatan strategis dan berbasis data untuk mentransformasi ide-ide baru menjadi produk dan layanan digital yang memiliki dampak nyata.",
+    members: [
+      {
+        id: "rd-1",
+        name: "Raden Whisnu Arya Nugraha",
+        image: "/image/Struktur/Deadpool.png",
+        role: "Ketua Divisi Research and Development",
+        instagram: "https://instagram.com/",
+      },
+      {
+        id: "rd-2",
+        name: "Raden Whisnu Arya Nugraha",
+        image: "/image/Struktur/Deadpool.png",
+        role: "Anggota",
+        instagram: "https://instagram.com/",
+      },
+      {
+        id: "rd-3",
+        name: "Raden Whisnu Arya Nugraha",
+        image: "/image/Struktur/Deadpool.png",
+        role: "Anggota",
+        instagram: "https://instagram.com/",
+      },
+      {
+        id: "rd-4",
+        name: "Raden Whisnu Arya Nugraha",
+        image: "/image/Struktur/Deadpool.png",
+        role: "Anggota",
+        instagram: "https://instagram.com/",
+      },
+    ],
+  },
   {
     id: "creative-media",
     name: "Creative Media",
@@ -29,13 +64,6 @@ export const divisions: Division[] = [
       },
       {
         id: "cm-4",
-        name: "Azzahra Dara Febrianti",
-        image: "/image/Struktur/Deadpool.png",
-        role: "Anggota",
-        instagram: "https://instagram.com/",
-      },
-      {
-        id: "cm-5",
         name: "Azzahra Dara Febrianti",
         image: "/image/Struktur/Deadpool.png",
         role: "Anggota",
@@ -76,55 +104,6 @@ export const divisions: Division[] = [
         role: "Anggota",
         instagram: "https://instagram.com/",
       },
-      {
-        id: "pr-5",
-        name: "Leysa Regita Parhusip",
-        image: "/image/Struktur/Deadpool.png",
-        role: "Anggota",
-        instagram: "https://instagram.com/",
-      },
-    ],
-  },
-  {
-    id: "research-and-development",
-    name: "Research and Development",
-    description: "Divisi Research and Development (R&D) bertugas sebagai pendorong inovasi dan solusi teknologi HIMASI. Dengan bergerak melampui sekadar eksplorasi, divisi ini mempraktikkan pendekatan strategis dan berbasis data untuk mentransformasi ide-ide baru menjadi produk dan layanan digital yang memiliki dampak nyata.",
-    members: [
-      {
-        id: "rd-1",
-        name: "Raden Whisnu Arya Nugraha",
-        image: "/image/Struktur/Deadpool.png",
-        role: "Ketua Divisi Research and Development",
-        instagram: "https://instagram.com/",
-      },
-      {
-        id: "rd-2",
-        name: "Raden Whisnu Arya Nugraha",
-        image: "/image/Struktur/Deadpool.png",
-        role: "Anggota",
-        instagram: "https://instagram.com/",
-      },
-      {
-        id: "rd-3",
-        name: "Raden Whisnu Arya Nugraha",
-        image: "/image/Struktur/Deadpool.png",
-        role: "Anggota",
-        instagram: "https://instagram.com/",
-      },
-      {
-        id: "rd-4",
-        name: "Raden Whisnu Arya Nugraha",
-        image: "/image/Struktur/Deadpool.png",
-        role: "Anggota",
-        instagram: "https://instagram.com/",
-      },
-      {
-        id: "rd-5",
-        name: "Raden Whisnu Arya Nugraha",
-        image: "/image/Struktur/Deadpool.png",
-        role: "Anggota",
-        instagram: "https://instagram.com/",
-      },
     ],
   },
   {
@@ -160,13 +139,6 @@ export const divisions: Division[] = [
         role: "Anggota",
         instagram: "https://instagram.com/",
       },
-      {
-        id: "htd-5",
-        name: "Andhika Pratama",
-        image: "/image/Struktur/Deadpool.png",
-        role: "Anggota",
-        instagram: "https://instagram.com/",
-      },
     ],
   },
   {
@@ -197,13 +169,6 @@ export const divisions: Division[] = [
       },
       {
         id: "ent-4",
-        name: "Laili Salsabila",
-        image: "/image/Struktur/Deadpool.png",
-        role: "Anggota",
-        instagram: "https://instagram.com/",
-      },
-      {
-        id: "ent-5",
         name: "Laili Salsabila",
         image: "/image/Struktur/Deadpool.png",
         role: "Anggota",
