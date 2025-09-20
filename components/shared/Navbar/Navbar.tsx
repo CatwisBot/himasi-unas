@@ -33,9 +33,21 @@ export default function Navbar() {
               height={70}
               className="h-[50px] w-[50px] object-contain md:h-[60px] md:w-[100px]"
             />
-            <div className="flex flex-col items-start font-bold text-xl">
-                <p>HIMASI</p>
-                <p>UNAS</p>
+            <div 
+              className="text-white font-bold text-2xl tracking-wider"
+              style={{
+                transform: 'skewX(10deg)',
+                textShadow: '4px 4px 8px rgba(0,0,0,0.5)'
+              }}
+            >
+              <div className="flex flex-col">
+                <span className="bg-gradient-to-r from-[#FFE8DB] via-[#E4C6BE] to-[#994555] bg-clip-text text-transparent">
+                    HIMASI
+                </span>
+                <span className="bg-gradient-to-r from-[#FFE8DB] via-[#E4C6BE] to-[#994555] bg-clip-text text-transparent">
+                    UNAS
+                </span>
+              </div>
             </div>
           </Link>
 
