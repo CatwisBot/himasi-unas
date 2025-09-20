@@ -7,7 +7,7 @@ import FTKI from "@/public/icon/FTKI.png";
 export default function Footer() {
   return (
     <footer className="bg-[#FFE8DB] text-[#4B061A] py-10 px-4 border-t border-[#f5cbb1]">
-      <div className="max-4xl lg:max-w-5xl xl:max-w-6xl mx-auto flex flex-col md:flex-row justify-around gap-8">
+      <div className="max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto flex flex-col md:flex-row justify-around gap-8">
         <div className="flex flex-col justify-start items-center md:items-start min-w-[220px]">
           <div className="flex flex-row items-center gap-4">
             <Image
