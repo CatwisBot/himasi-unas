@@ -1,4 +1,5 @@
 import BPH from "@/components/shared/Struktur/infoBPH";
+import Divisi from "@/components/shared/Struktur/infoDivision";
 
 export default function GaleriPage() {
     return(
@@ -14,6 +15,9 @@ export default function GaleriPage() {
       <div className="bg-[#4B061A]">
         <BPH />
       </div>
+
+      <Divisi />
+
     </main>
     );
 }
