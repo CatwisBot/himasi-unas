@@ -56,9 +56,15 @@ export default function Leaders() {
           <Link
             href={leader.instagram}
             target="_blank"
-            className="inline-block mt-3 text-gray-200 hover:text-pink-500"
+            className={`group inline-flex items-center justify-center mt-4 p-3 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white shadow-lg transform transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-pink-500/25 hover:-translate-y-1 ${alignRight ? "mx-auto md:ml-auto" : ""}`}
           >
-            <Instagram size={20} className={alignRight ? "mx-auto md:ml-auto" : ""} />
+            <Instagram 
+              size={20} 
+              className="transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" 
+            />
+            <span className="ml-2 text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+              Follow
+            </span>
           </Link>
         </div>
       </div>
