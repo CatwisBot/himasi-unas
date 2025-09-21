@@ -5,7 +5,7 @@ import { BANNER_DATA } from "@/constants/Home/Banner";
 export default function Activity() {
     return(
         <main className="bg-[#4B061A] py-15 md:py-20">
-            <div className="w-full max-w-6xl mx-auto px-4 flex justify-center items-center text-center pt-6 md:pt-9 lg:pt-12">
+            <div className="w-full max-w-6xl mx-auto px-4 flex justify-center items-center text-center">
                 <h2 className="font-bold text-xl md:text-2xl lg:text-4xl xl:text-6xl uppercase text-white">Kegiatan</h2>
             </div>
             
