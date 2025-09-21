@@ -234,6 +234,7 @@ body:has(.hide-navbar-footer) #root-layout > footer {
   letter-spacing: 0.2em;
   animation: textPulse 3s ease-in-out infinite;
   white-space: nowrap;
+  opacity: 0.7;
 }
 
 @keyframes textPulse {
