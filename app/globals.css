@@ -4,7 +4,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Line clamp utilities */
 .line-clamp-1 {
   overflow: hidden;
   display: -webkit-box;
@@ -29,7 +28,6 @@ html {
   line-clamp: 3;
 }
 
-/* Text shadow utilities for overlay text */
 .drop-shadow-lg {
   filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
     drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
@@ -39,7 +37,6 @@ html {
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Tooltip styles */
 .tooltip {
   position: relative;
 }
@@ -62,7 +59,6 @@ html {
   opacity: 1;
 }
 
-/* Filter title animation */
 .filter-title-enter {
   opacity: 0;
   transform: translateY(-10px);
@@ -89,7 +85,6 @@ html {
   }
 }
 
-/* Mobile optimizations */
 @media (max-width: 640px) {
   .grid-mobile-compact {
     gap: 0.5rem;
@@ -105,7 +100,6 @@ html {
   }
 }
 
-/* Modal animations */
 .modal-enter {
   opacity: 0;
   transform: scale(0.9);
@@ -130,7 +124,6 @@ html {
   }
 }
 
-/* Detail button hover effects */
 .detail-button {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -177,7 +170,6 @@ html {
   background: linear-gradient(90deg, #ffe8db 0%, #ffe8db 100%);
 }
 
-/* Modal scrollbar styling */
 .scrollbar-modal {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
@@ -206,7 +198,6 @@ html {
   box-shadow: 0 4px 8px rgba(161, 76, 243, 0.5);
 }
 
-/* Firefox scrollbar for modal */
 .scrollbar-modal {
   scrollbar-width: thin;
   scrollbar-color: #a14cf3 rgba(255, 255, 255, 0.05);
