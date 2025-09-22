@@ -1,8 +1,53 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Kahim from "@/public/image/Home/Kahims.png";
 
 export default function Hero() {
+  const [displayedSistem, setDisplayedSistem] = useState("");
+  const [displayedInformasi, setDisplayedInformasi] = useState("");
+  const [currentSistemIndex, setCurrentSistemIndex] = useState(0);
+  const [currentInformasiIndex, setCurrentInformasiIndex] = useState(0);
+  const [showCursor, setShowCursor] = useState(true);
+  const [phase, setPhase] = useState("sistem");
+  
+  const sistemText = "Sistem";
+  const informasiText = "Informasi";
+
+  useEffect(() => {
+    if (phase === "sistem" && currentSistemIndex < sistemText.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedSistem(sistemText.slice(0, currentSistemIndex + 1));
+        setCurrentSistemIndex(currentSistemIndex + 1);
+      }, 150);
+      return () => clearTimeout(timeout);
+    } else if (phase === "sistem" && currentSistemIndex >= sistemText.length) {
+      const timeout = setTimeout(() => {
+        setPhase("informasi");
+      }, 300);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentSistemIndex, phase, sistemText]);
+
+  useEffect(() => {
+    if (phase === "informasi" && currentInformasiIndex < informasiText.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedInformasi(informasiText.slice(0, currentInformasiIndex + 1));
+        setCurrentInformasiIndex(currentInformasiIndex + 1);
+      }, 150);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentInformasiIndex, phase, informasiText]);
+
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setShowCursor((prev) => !prev);
+    }, 500);
+    return () => clearInterval(cursorInterval);
+  }, []);
+
   return (
     <main className="relative overflow-hidden bg-[#FFE8DB] !bg-[#FFE8DB]">
       <div className="w-full max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto px-4 pb-3 sm:pb-10">
@@ -13,7 +58,27 @@ export default function Hero() {
               <br />
               <span className="text-[#4B061A]">Mahasiswa </span>
               <span className="text-black">
-                Sistem <br /> Informasi
+                <span className="inline-flex">
+                  {displayedSistem}
+                  {phase === "sistem" && (
+                    <span 
+                      className={`ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`}
+                    >
+                      |
+                    </span>
+                  )}
+                </span>
+                <br /> 
+                <span className="inline-flex">
+                  {displayedInformasi}
+                  {phase === "informasi" && (
+                    <span 
+                      className={`ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`}
+                    >
+                      |
+                    </span>
+                  )}
+                </span>
               </span>
             </h1>
 
