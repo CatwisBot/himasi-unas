@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { leaders } from "@/constants/Struktur/dataBPH";
 import { Instagram } from "lucide-react";
 import type { StaticImageData } from "next/image";
