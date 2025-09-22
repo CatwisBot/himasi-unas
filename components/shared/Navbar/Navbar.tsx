@@ -21,126 +21,126 @@ export default function Navbar() {
   const router = useRouter();
 
   return (
-    <header className="sticky z-[99] top-0 w-full bg-[#4B061A]">
-      <div className="h-[80px] w-full border-b-2 border-[rgba(0,0,0,0.10)]">
-        <div className="container mx-auto flex h-full items-center justify-between px-4">
-          {/* Logo */}
-          <Link href="/" className="flex flex-row items-center space-x-2 md:space-x-0">
-            <Image
-              src={HIMASI}
-              alt="Logo HIMASI UNAS"
-              width={140}
-              height={70}
-              className="h-[50px] w-[50px] object-contain md:h-[60px] md:w-[100px]"
-            />
-            <div 
-              className="text-white font-bold text-2xl tracking-wider"
-              style={{
-                transform: 'skewX(10deg)',
-                textShadow: '4px 4px 8px rgba(0,0,0,0.5)'
-              }}
-            >
-              <div className="flex flex-col">
-                <span className="bg-gradient-to-r from-[#FFE8DB] via-[#E4C6BE] to-[#994555] bg-clip-text text-transparent">
-                    HIMASI
-                </span>
-                <span className="bg-gradient-to-r from-[#FFE8DB] via-[#E4C6BE] to-[#994555] bg-clip-text text-transparent">
-                    UNAS
-                </span>
-              </div>
-            </div>
-          </Link>
-
-          {/* Desktop Menu */}
-          <nav className="hidden lg:flex mr-8">
-            <NavigationMenu>
-              <NavigationMenuList className="flex flex-row gap-8">
-                {navMenu.map(({ title, path }) => {
-                  return (
-                    <NavigationMenuItem
-                      key={title}
-                      className="relative flex items-center"
-                    >
-                      <Link href={path} legacyBehavior passHref>
-                        <NavigationMenuLink
-                          className={`
-                            relative px-2 py-1 text-white transition-colors duration-150
-                            after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:h-0.5 after:bg-white after:w-0 after:transition-all after:duration-300
-                            hover:after:w-full
-                            ${pathname === path ? "after:w-full after:bg-white after:h-0.5" : ""}
-                            font-bold
-                          `}
-                        >
-                          {title}
-                        </NavigationMenuLink>
-                      </Link>
-                    </NavigationMenuItem>
-                  );
-                })}
-              </NavigationMenuList>
-            </NavigationMenu>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <div className="flex lg:hidden">
-            <button
-              className="p-2"
-              onClick={() => setMenuOpen((prev) => !prev)}
-              aria-label="Toggle menu"
-            >
-              {menuOpen ? (
-                <div className="rotate-90 duration-300">
-                  <X size={32} color="#fff" />
-                </div>
-              ) : (
-                <div className="duration-300">
-                  <Menu size={32} color="#fff" />
-                </div>
-              )}
-            </button>
+    <header className="sticky z-[99] top-0 w-full bg-[#6B1430]">
+      <div className="h-[80px] w-full border-b-2 border-[rgba(0,0,0,0.07)]">
+      <div className="container mx-auto flex h-full items-center justify-between px-4">
+        {/* Logo */}
+        <Link href="/" className="flex flex-row items-center space-x-2 md:space-x-0">
+        <Image
+          src={HIMASI}
+          alt="Logo HIMASI UNAS"
+          width={140}
+          height={70}
+          className="h-[50px] w-[50px] object-contain md:h-[60px] md:w-[100px]"
+        />
+        <div 
+          className="text-white font-bold text-2xl tracking-wider"
+          style={{
+          transform: 'skewX(10deg)',
+          textShadow: '4px 4px 8px rgba(0,0,0,0.3)'
+          }}
+        >
+          <div className="flex flex-col">
+          <span className="bg-gradient-to-r from-[#FFF0E6] via-[#F5D6CC] to-[#B05B7A] bg-clip-text text-transparent">
+            HIMASI
+          </span>
+          <span className="bg-gradient-to-r from-[#FFF0E6] via-[#F5D6CC] to-[#B05B7A] bg-clip-text text-transparent">
+            UNAS
+          </span>
           </div>
         </div>
+        </Link>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {menuOpen && (
-            <motion.div
-              key="mobile-menu"
-              initial={{ opacity: 0, y: -32, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -32, scale: 0.98 }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="lg:hidden bg-[#4B061A] px-4 pb-4 flex justify-center absolute left-0 right-0 top-20"
+        {/* Desktop Menu */}
+        <nav className="hidden lg:flex mr-8">
+        <NavigationMenu>
+          <NavigationMenuList className="flex flex-row gap-8">
+          {navMenu.map(({ title, path }) => {
+            return (
+            <NavigationMenuItem
+              key={title}
+              className="relative flex items-center"
             >
-              <div className="max-w-xs w-full mx-auto flex flex-col items-center">
-                <NavigationMenu>
-                  <NavigationMenuList className="flex flex-col gap-4 items-center w-full">
-                    {navMenu.map(({ title, path }) => (
-                      <NavigationMenuItem
-                        key={title}
-                        className="w-full flex flex-col items-center"
-                      >
-                        <button
-                          className={`text-white px-2 py-1 font-semibold transition-all duration-150 w-full text-center ${
-                            pathname === path
-                              ? "border-b-2 border-white"
-                              : "opacity-70 hover:opacity-100"
-                          }`}
-                          onClick={() => {
-                            setMenuOpen(false);
-                            setTimeout(() => router.push(path), 300);
-                          }}
-                        >
-                          {title}
-                        </button>
-                      </NavigationMenuItem>
-                    ))}
-                  </NavigationMenuList>
-                </NavigationMenu>
-              </div>
-            </motion.div>
+              <Link href={path} legacyBehavior passHref>
+              <NavigationMenuLink
+                className={`
+                relative px-2 py-1 text-white transition-colors duration-150
+                after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:h-0.5 after:bg-white after:w-0 after:transition-all after:duration-300
+                hover:after:w-full
+                ${pathname === path ? "after:w-full after:bg-white after:h-0.5" : ""}
+                font-bold
+                `}
+              >
+                {title}
+              </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            );
+          })}
+          </NavigationMenuList>
+        </NavigationMenu>
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <div className="flex lg:hidden">
+        <button
+          className="p-2"
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? (
+          <div className="rotate-90 duration-300">
+            <X size={32} color="#fff" />
+          </div>
+          ) : (
+          <div className="duration-300">
+            <Menu size={32} color="#fff" />
+          </div>
           )}
-        </AnimatePresence>
+        </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+        <motion.div
+          key="mobile-menu"
+          initial={{ opacity: 0, y: -32, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -32, scale: 0.98 }}
+          transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+          className="lg:hidden bg-[#6B1430] px-4 pb-4 flex justify-center absolute left-0 right-0 top-20"
+        >
+          <div className="max-w-xs w-full mx-auto flex flex-col items-center">
+          <NavigationMenu>
+            <NavigationMenuList className="flex flex-col gap-4 items-center w-full">
+            {navMenu.map(({ title, path }) => (
+              <NavigationMenuItem
+              key={title}
+              className="w-full flex flex-col items-center"
+              >
+              <button
+                className={`text-white px-2 py-1 font-semibold transition-all duration-150 w-full text-center ${
+                pathname === path
+                  ? "border-b-2 border-white"
+                  : "opacity-80 hover:opacity-100"
+                }`}
+                onClick={() => {
+                setMenuOpen(false);
+                setTimeout(() => router.push(path), 300);
+                }}
+              >
+                {title}
+              </button>
+              </NavigationMenuItem>
+            ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+          </div>
+        </motion.div>
+        )}
+      </AnimatePresence>
       </div>
     </header>
   );
