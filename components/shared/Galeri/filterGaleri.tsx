@@ -183,7 +183,7 @@ export default function FilterGaleri() {
                 {filteredItems.length === 0 && (
                     <div className="text-center py-12">
                         <p className="text-white/60 text-lg">
-                            Tidak ada kegiatan untuk filter "{activeFilter}"
+                            Tidak ada kegiatan untuk filter &quot;{activeFilter}&quot;
                         </p>
                     </div>
                 )}
