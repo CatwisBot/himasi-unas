@@ -21,7 +21,10 @@ const ChatBot = () => {
         setMessages((prev) => [...prev, loadingMessage]);
 
         try {
-            const response = await fetch('/api/chat', {
+            // Use alternative endpoint to bypass Sucuri firewall
+            const apiUrl = '/chatbot.php';  // Alternative endpoint at root level
+            
+            const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -30,10 +33,12 @@ const ChatBot = () => {
             });
 
             if (!response.ok) {
+                console.error('API Error:', response.status, response.statusText);
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
             const data = await response.json();
+            console.log('API Response:', data);
             
             // Remove loading message and add actual response
             setMessages((prev) => {
@@ -53,7 +58,7 @@ const ChatBot = () => {
                 const messagesWithoutLoading = prev.slice(0, -1);
                 const errorMessage = { 
                     sender: 'bot' as const, 
-                    content: '❌ Maaf, chatbot sedang tidak tersedia. Pastikan server Python berjalan di localhost:5000' 
+                    content: '❌ Maaf, chatbot sedang tidak tersedia. Silakan coba lagi atau hubungi admin.' 
                 };
                 return [...messagesWithoutLoading, errorMessage];
             });

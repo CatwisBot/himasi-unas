@@ -7,9 +7,17 @@ export async function POST(request: NextRequest) {
     console.log('📝 Request body:', body);
     
     // Use environment variable for backend URL
-    const backendUrl = process.env.NODE_ENV === 'production' 
-      ? '/.netlify/functions/chat'  // Netlify Functions URL
-      : 'http://localhost:5000/api/chat';
+    let backendUrl: string;
+    
+    if (process.env.NODE_ENV === 'production') {
+      // For Hostinger: Use PHP backend on same domain
+      const host = request.headers.get('host') || 'localhost';
+      const protocol = request.headers.get('x-forwarded-proto') || 'https';
+      backendUrl = `${protocol}://${host}/api/chat`;
+    } else {
+      // For development: Use local Flask server
+      backendUrl = 'http://localhost:5000/api/chat';
+    }
     console.log('📡 Calling backend:', backendUrl);
     
     const response = await fetch(backendUrl, {
