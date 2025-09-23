@@ -191,11 +191,17 @@ const ChatBot = () => {
                     font-size: 14px;
                     transition: border-color 0.2s ease;
                     background: white;
+                    color: #4B061A;
+                }
+
+                .chat-input::placeholder {
+                    color: #999;
                 }
 
                 .chat-input:focus {
                     border-color: #4B061A;
                     box-shadow: 0 0 0 2px rgba(148, 0, 2, 0.2);
+                    color: #4B061A;
                 }
 
                 .send-button {
