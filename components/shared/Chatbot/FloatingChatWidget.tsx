@@ -55,7 +55,7 @@ const FloatingChatWidget = () => {
                             </div>
                             <div className="header-text">
                                 <h3>HIMASI Assistant</h3>
-                                <p>Siap membantu Anda</p>
+                                <p>Siap membantu Anda Selalu</p>
                             </div>
                         </div>
                     </div>
