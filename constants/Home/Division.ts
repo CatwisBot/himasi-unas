@@ -1,30 +1,36 @@
 import { Division } from "@/lib/type/Home/tDivision";
-import Laptop from "@/public/icon/Home/Laptop.png";
+import {
+  FlaskConical,
+  Palette,
+  Users,
+  TrendingUp,
+  GraduationCap,
+} from "lucide-react";
 
 export const divisions: Division[] = [
   {
     id: 1,
     title: "Research and Development",
-    image: Laptop,
+    image: FlaskConical,
   },
   {
     id: 2,
     title: "Creative Media",
-    image: Laptop,
+    image: Palette,
   },
   {
     id: 3,
     title: "Public Relation",
-    image: Laptop,
+    image: Users,
   },
   {
     id: 4,
     title: "Entrepreneurship",
-    image: Laptop,
+    image: TrendingUp,
   },
   {
     id: 5,
     title: "Human Talent Development",
-    image: Laptop,
+    image: GraduationCap,
   },
 ];
