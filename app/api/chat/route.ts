@@ -6,9 +6,9 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     console.log('📝 Request body:', body);
     
-    // Use environment variable for backend URL, fallback to localhost for development
+    // Use environment variable for backend URL
     const backendUrl = process.env.NODE_ENV === 'production' 
-      ? process.env.BACKEND_URL || 'https://himasi-backend.railway.app/api/chat'  // Update with your Railway URL
+      ? '/.netlify/functions/chat'  // Netlify Functions URL
       : 'http://localhost:5000/api/chat';
     console.log('📡 Calling backend:', backendUrl);
     
