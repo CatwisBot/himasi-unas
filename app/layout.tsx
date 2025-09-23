@@ -4,6 +4,7 @@ import "./globals.css";
 import { Poppins } from "next/font/google";
 import Navbar from "@/components/shared/Navbar/Navbar";
 import Footer from "@/components/shared/Footer/Footer";
+import FloatingChatWidget from "@/components/shared/Chatbot/FloatingChatWidget";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div id="root-layout">
             <Navbar />
             {children}
+            <FloatingChatWidget />
             <Footer />
           </div>
         </ThemeProvider>

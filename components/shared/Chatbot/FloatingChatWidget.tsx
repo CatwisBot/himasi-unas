@@ -1,0 +1,188 @@
+"use client";
+
+import React, { useState } from 'react';
+import ChatBot from './ChatBot';
+
+const FloatingChatWidget = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleChat = () => {
+        setIsOpen(!isOpen);
+    };
+
+    return (
+        <>
+            {/* Floating Chat Button */}
+            <div 
+                className={`floating-chat-button ${isOpen ? 'open' : ''}`}
+                onClick={toggleChat}
+            >
+                {isOpen ? (
+                    // Close Icon (X)
+                    <svg 
+                        width="24" 
+                        height="24" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="2"
+                    >
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                ) : (
+                    // Robot Icon
+                    <svg 
+                        width="28" 
+                        height="28" 
+                        viewBox="0 0 24 24" 
+                        fill="currentColor"
+                    >
+                        <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.9 1 3 1.9 3 3V7C1.9 7 1 7.9 1 9V16C1 17.1 1.9 18 3 18V20C3 21.1 3.9 22 5 22H19C20.1 22 21 21.1 21 20V18C22.1 18 23 17.1 23 16V9C23 7.9 22.1 7 21 7V9ZM19 16H5V9H19V16ZM7.5 13.5C7.5 14.3 6.8 15 6 15S4.5 14.3 4.5 13.5S5.2 12 6 12S7.5 12.7 7.5 13.5ZM19.5 13.5C19.5 14.3 18.8 15 18 15S16.5 14.3 16.5 13.5S17.2 12 18 12S19.5 12.7 19.5 13.5ZM16 17.5H8C8 16.1 9.3 15 11 15H13C14.7 15 16 16.1 16 17.5Z"/>
+                    </svg>
+                )}
+            </div>
+
+            {/* Chat Window */}
+            {isOpen && (
+                <div className="floating-chat-window">
+                    <div className="chat-window-header">
+                        <div className="header-content">
+                            <div className="robot-avatar">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.9 1 3 1.9 3 3V7C1.9 7 1 7.9 1 9V16C1 17.1 1.9 18 3 18V20C3 21.1 3.9 22 5 22H19C20.1 22 21 21.1 21 20V18C22.1 18 23 17.1 23 16V9C23 7.9 22.1 7 21 7V9ZM19 16H5V9H19V16ZM7.5 13.5C7.5 14.3 6.8 15 6 15S4.5 14.3 4.5 13.5S5.2 12 6 12S7.5 12.7 7.5 13.5ZM19.5 13.5C19.5 14.3 18.8 15 18 15S16.5 14.3 16.5 13.5S17.2 12 18 12S19.5 12.7 19.5 13.5Z"/>
+                                </svg>
+                            </div>
+                            <div className="header-text">
+                                <h3>HIMASI Assistant</h3>
+                                <p>Siap membantu Anda</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="chat-window-body">
+                        <ChatBot />
+                    </div>
+                </div>
+            )}
+
+            <style jsx>{`
+                .floating-chat-button {
+                    position: fixed;
+                    bottom: 20px;
+                    right: 20px;
+                    width: 60px;
+                    height: 60px;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+                    color: white;
+                    transition: all 0.3s ease;
+                    z-index: 1000;
+                    animation: pulse 2s infinite;
+                }
+
+                .floating-chat-button:hover {
+                    transform: scale(1.1);
+                    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+                }
+
+                .floating-chat-button.open {
+                    background: #ff6b6b;
+                    animation: none;
+                }
+
+                @keyframes pulse {
+                    0% { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(102, 126, 234, 0.7); }
+                    70% { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 10px rgba(102, 126, 234, 0); }
+                    100% { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(102, 126, 234, 0); }
+                }
+
+                .floating-chat-window {
+                    position: fixed;
+                    bottom: 90px;
+                    right: 20px;
+                    width: 350px;
+                    height: 500px;
+                    background: white;
+                    border-radius: 16px;
+                    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+                    display: flex;
+                    flex-direction: column;
+                    overflow: hidden;
+                    z-index: 999;
+                    animation: slideUp 0.3s ease-out;
+                }
+
+                @keyframes slideUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                .chat-window-header {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    padding: 16px;
+                    min-height: 70px;
+                }
+
+                .header-content {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                }
+
+                .robot-avatar {
+                    width: 40px;
+                    height: 40px;
+                    background: rgba(255, 255, 255, 0.2);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .header-text h3 {
+                    margin: 0;
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+
+                .header-text p {
+                    margin: 0;
+                    font-size: 12px;
+                    opacity: 0.8;
+                }
+
+                .chat-window-body {
+                    flex: 1;
+                    overflow: hidden;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                /* Responsive untuk mobile */
+                @media (max-width: 480px) {
+                    .floating-chat-window {
+                        width: calc(100vw - 40px);
+                        height: calc(100vh - 140px);
+                        bottom: 90px;
+                        right: 20px;
+                        left: 20px;
+                    }
+                }
+            `}</style>
+        </>
+    );
+};
+
+export default FloatingChatWidget;
