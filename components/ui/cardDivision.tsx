@@ -3,7 +3,6 @@ import { Division } from "@/lib/type/Home/tDivision";
 import { StaticImageData } from "next/image";
 import { LucideIcon } from "lucide-react";
 
-// Type guard to check if image is a StaticImageData
 const isStaticImageData = (image: StaticImageData | LucideIcon): image is StaticImageData => {
   return typeof image === 'object' && 'src' in image && typeof (image as StaticImageData).src === 'string';
 };
