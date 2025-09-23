@@ -4,8 +4,8 @@ import { StaticImageData } from "next/image";
 import { LucideIcon } from "lucide-react";
 
 // Type guard to check if image is a StaticImageData
-const isStaticImageData = (image: any): image is StaticImageData => {
-  return typeof image === 'object' && image.src && typeof image.src === 'string';
+const isStaticImageData = (image: StaticImageData | LucideIcon): image is StaticImageData => {
+  return typeof image === 'object' && 'src' in image && typeof (image as StaticImageData).src === 'string';
 };
 
 export default function Card({ title, image }: Division) {
