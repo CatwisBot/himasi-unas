@@ -1,7 +1,16 @@
 import Image from "next/image";
 import { Division } from "@/lib/type/Home/tDivision";
+import { StaticImageData } from "next/image";
+import { LucideIcon } from "lucide-react";
+
+// Type guard to check if image is a StaticImageData
+const isStaticImageData = (image: any): image is StaticImageData => {
+  return typeof image === 'object' && image.src && typeof image.src === 'string';
+};
 
 export default function Card({ title, image }: Division) {
+  const IconComponent = image as LucideIcon;
+  
   return (
     <div
       className="
@@ -11,11 +20,20 @@ export default function Card({ title, image }: Division) {
         p-4 sm:p-6
       "
     >
-      <Image
-        src={image}
-        alt={title}
-        className="mt-1 md:mt-4 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12"
-      />
+      {isStaticImageData(image) ? (
+        <Image
+          src={image}
+          alt={title}
+          className="mt-1 md:mt-4 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12"
+        />
+      ) : (
+        <div className="mt-1 md:mt-4 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-white flex items-center justify-center">
+          <IconComponent 
+            size={32} 
+            className="w-full h-full max-w-[48px] max-h-[48px]" 
+          />
+        </div>
+      )}
 
       <div className="mt-3 sm:mt-4 flex items-center justify-center">
         <p className="text-white font-bold text-xs md:text-sm lg:text-base xl:text-lg leading-snug">
