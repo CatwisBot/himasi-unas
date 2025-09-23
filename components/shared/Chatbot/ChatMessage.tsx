@@ -67,13 +67,15 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ sender, message }) => {
         }
 
         .user .message-avatar {
-          background: #667eea;
+          background: linear-gradient(135deg, #940002 0%, #4B061A 100%);
           color: white;
+          box-shadow: 0 2px 4px rgba(148, 0, 2, 0.3);
         }
 
         .bot .message-avatar {
-          background: #f0f0f0;
-          color: #666;
+          background: rgba(255, 255, 255, 0.9);
+          color: #940002;
+          border: 2px solid #940002;
         }
 
         .message-bubble {
@@ -84,16 +86,18 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ sender, message }) => {
         }
 
         .user .message-bubble {
-          background: #667eea;
+          background: linear-gradient(135deg, #940002 0%, #4B061A 100%);
           color: white;
           border-bottom-right-radius: 4px;
+          box-shadow: 0 2px 8px rgba(148, 0, 2, 0.3);
         }
 
         .bot .message-bubble {
-          background: white;
-          color: #333;
+          background: rgba(255, 255, 255, 0.95);
+          color: #4B061A;
           border-bottom-left-radius: 4px;
-          border: 1px solid #e0e0e0;
+          border: 2px solid #940002;
+          box-shadow: 0 2px 8px rgba(148, 0, 2, 0.1);
         }
 
         .message-text {
@@ -111,7 +115,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ sender, message }) => {
           width: 0;
           height: 0;
           border: 6px solid transparent;
-          border-top-color: #667eea;
+          border-top-color: #940002;
           border-right: 0;
           border-bottom: 0;
           margin-bottom: -6px;
@@ -121,11 +125,11 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ sender, message }) => {
           content: '';
           position: absolute;
           bottom: 0;
-          left: -6px;
+          left: -7px;
           width: 0;
           height: 0;
           border: 6px solid transparent;
-          border-top-color: white;
+          border-top-color: rgba(255, 255, 255, 0.95);
           border-left: 0;
           border-bottom: 0;
           margin-bottom: -6px;
