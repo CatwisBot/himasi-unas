@@ -72,13 +72,13 @@ const FloatingChatWidget = () => {
                     right: 20px;
                     width: 60px;
                     height: 60px;
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    background: linear-gradient(135deg, #940002 0%, #4B061A 100%);
                     border-radius: 50%;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     cursor: pointer;
-                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+                    box-shadow: 0 4px 20px rgba(148, 0, 2, 0.3);
                     color: white;
                     transition: all 0.3s ease;
                     z-index: 1000;
@@ -87,18 +87,18 @@ const FloatingChatWidget = () => {
 
                 .floating-chat-button:hover {
                     transform: scale(1.1);
-                    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+                    box-shadow: 0 6px 25px rgba(148, 0, 2, 0.4);
                 }
 
                 .floating-chat-button.open {
-                    background: #ff6b6b;
+                    background: #940002;
                     animation: none;
                 }
 
                 @keyframes pulse {
-                    0% { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(102, 126, 234, 0.7); }
-                    70% { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 10px rgba(102, 126, 234, 0); }
-                    100% { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(102, 126, 234, 0); }
+                    0% { box-shadow: 0 4px 20px rgba(148, 0, 2, 0.3), 0 0 0 0 rgba(148, 0, 2, 0.7); }
+                    70% { box-shadow: 0 4px 20px rgba(148, 0, 2, 0.3), 0 0 0 10px rgba(148, 0, 2, 0); }
+                    100% { box-shadow: 0 4px 20px rgba(148, 0, 2, 0.3), 0 0 0 0 rgba(148, 0, 2, 0); }
                 }
 
                 .floating-chat-window {
@@ -107,14 +107,15 @@ const FloatingChatWidget = () => {
                     right: 20px;
                     width: 350px;
                     height: 500px;
-                    background: white;
+                    background: #FFE8DB;
                     border-radius: 16px;
-                    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+                    box-shadow: 0 12px 40px rgba(148, 0, 2, 0.2);
                     display: flex;
                     flex-direction: column;
                     overflow: hidden;
                     z-index: 999;
                     animation: slideUp 0.3s ease-out;
+                    border: 2px solid #940002;
                 }
 
                 @keyframes slideUp {
@@ -129,7 +130,7 @@ const FloatingChatWidget = () => {
                 }
 
                 .chat-window-header {
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    background: #940002;
                     color: white;
                     padding: 16px;
                     min-height: 70px;
