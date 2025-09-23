@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import Kahim from "@/public/image/Home/Kahims.png";
+// import Image from "next/image";
+// import Kahim from "@/public/image/Home/Kahims.png";
 
 export default function Hero() {
   const [displayedSistem, setDisplayedSistem] = useState("");
