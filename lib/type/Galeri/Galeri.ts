@@ -14,13 +14,13 @@ export interface GalleryEvent {
 export interface FilteredGalleryItem {
   id: string;
   category:
-    | "Proker 1"
-    | "Proker 2"
-    | "Proker 3"
-    | "Proker 4"
-    | "Proker 5"
-    | "Himpunan"
-    | "Wawancara";
+    // | "Proker 1"
+    // | "Proker 2"
+    // | "Proker 3"
+    // | "Proker 4"
+    | "PLBA"
+    | "Wawancara"
+    | "Himpunan";
   title: string;
   tanggal: string;
   lokasi: string;
@@ -31,10 +31,10 @@ export interface FilteredGalleryItem {
 
 export type GalleryFilter =
   | "All"
-  | "Proker 1"
-  | "Proker 2"
-  | "Proker 3"
-  | "Proker 4"
-  | "Proker 5"
-  | "Himpunan"
-  | "Wawancara";
+  // | "Proker 1"
+  // | "Proker 2"
+  // | "Proker 3"
+  // | "Proker 4"
+  | "PLBA"
+  | "Wawancara"
+  | "Himpunan";
