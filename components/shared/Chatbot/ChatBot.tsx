@@ -3,7 +3,13 @@
 import React, { useState } from 'react';
 import ChatMessage from './ChatMessage';
 
-type Message = { sender: 'user' | 'bot'; content: string };
+type Message = { 
+    sender: 'user' | 'bot'; 
+    content: string;
+    confidence?: string;
+    suggestions?: string[];
+    type?: string;
+};
 
 const ChatBot = () => {
     const [messages, setMessages] = useState<Message[]>([]);
@@ -21,8 +27,8 @@ const ChatBot = () => {
         setMessages((prev) => [...prev, loadingMessage]);
 
         try {
-            // Use alternative endpoint to bypass Sucuri firewall
-            const apiUrl = '/chatbot.php';  // Alternative endpoint at root level
+            // Use smart chatbot endpoint for learning capabilities
+            const apiUrl = '/chatbot-smart.php';  
             
             const response = await fetch(apiUrl, {
                 method: 'POST',
@@ -38,17 +44,34 @@ const ChatBot = () => {
             }
 
             const data = await response.json();
-            console.log('API Response:', data);
+            console.log('Smart Bot Response:', data);
             
             // Remove loading message and add actual response
             setMessages((prev) => {
                 const messagesWithoutLoading = prev.slice(0, -1);
                 const botMessage = { 
                     sender: 'bot' as const, 
-                    content: data.answer || data.response || 'Maaf, terjadi kesalahan dalam memproses pertanyaan Anda.' 
+                    content: data.answer || data.response || 'Maaf, terjadi kesalahan dalam memproses pertanyaan Anda.',
+                    confidence: data.confidence,
+                    suggestions: data.suggestions
                 };
                 return [...messagesWithoutLoading, botMessage];
             });
+
+            // Add suggestions if confidence is low
+            if (data.confidence === 'low' && data.suggestions && data.suggestions.length > 0) {
+                setTimeout(() => {
+                    setMessages((prev) => [
+                        ...prev,
+                        { 
+                            sender: 'bot' as const, 
+                            content: '💡 Mungkin Anda ingin bertanya tentang:\n' + 
+                                    data.suggestions.map((s: string) => `• ${s}`).join('\n'),
+                            type: 'suggestions'
+                        }
+                    ]);
+                }, 1000);
+            }
 
         } catch (error) {
             console.error('Error sending message:', error);
@@ -62,6 +85,41 @@ const ChatBot = () => {
                 };
                 return [...messagesWithoutLoading, errorMessage];
             });
+        }
+    };
+
+    const handleFeedback = async (messageIndex: number, isHelpful: boolean) => {
+        try {
+            const originalMessage = messages[messageIndex - 1]?.content;
+            const botResponse = messages[messageIndex]?.content;
+            
+            await fetch('/chatbot-smart.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    type: 'feedback',
+                    messageIndex,
+                    isHelpful,
+                    originalMessage,
+                    botResponse
+                }),
+            });
+
+            console.log('Feedback sent successfully');
+            
+            // Show confirmation message
+            setMessages((prev) => [
+                ...prev,
+                { 
+                    sender: 'bot' as const, 
+                    content: '✅ Terima kasih atas feedback Anda! Saya akan terus belajar untuk memberikan jawaban yang lebih baik.' 
+                }
+            ]);
+            
+        } catch (error) {
+            console.error('Error sending feedback:', error);
         }
     };
 
@@ -87,7 +145,25 @@ const ChatBot = () => {
                     </div>
                 )}
                 {messages.map((msg, index) => (
-                    <ChatMessage key={index} sender={msg.sender} message={msg.content} />
+                    <div key={index}>
+                        <ChatMessage sender={msg.sender} message={msg.content} />
+                        {msg.sender === 'bot' && msg.confidence === 'low' && !msg.type && (
+                            <div className="feedback-buttons">
+                                <button 
+                                    onClick={() => handleFeedback(index, true)}
+                                    className="feedback-btn helpful"
+                                >
+                                    👍 Membantu
+                                </button>
+                                <button 
+                                    onClick={() => handleFeedback(index, false)}
+                                    className="feedback-btn not-helpful"
+                                >
+                                    👎 Tidak membantu
+                                </button>
+                            </div>
+                        )}
+                    </div>
                 ))}
             </div>
             <div className="chat-input-container">
@@ -246,6 +322,47 @@ const ChatBot = () => {
 
                 .chat-window::-webkit-scrollbar-thumb:hover {
                     background: #999;
+                }
+
+                /* Feedback buttons styling */
+                .feedback-buttons {
+                    display: flex;
+                    gap: 8px;
+                    margin-top: 8px;
+                    margin-left: 50px;
+                    margin-bottom: 8px;
+                }
+
+                .feedback-btn {
+                    padding: 6px 12px;
+                    border: none;
+                    border-radius: 16px;
+                    cursor: pointer;
+                    font-size: 12px;
+                    transition: all 0.2s ease;
+                    font-weight: 500;
+                }
+
+                .feedback-btn.helpful {
+                    background: rgba(34, 197, 94, 0.1);
+                    color: #16a34a;
+                    border: 1px solid #16a34a;
+                }
+
+                .feedback-btn.helpful:hover {
+                    background: #16a34a;
+                    color: white;
+                }
+
+                .feedback-btn.not-helpful {
+                    background: rgba(239, 68, 68, 0.1);
+                    color: #dc2626;
+                    border: 1px solid #dc2626;
+                }
+
+                .feedback-btn.not-helpful:hover {
+                    background: #dc2626;
+                    color: white;
                 }
             `}</style>
         </div>
