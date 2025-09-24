@@ -8,9 +8,10 @@
 
 Hostinger mendukung PHP secara native, jadi kita gunakan PHP backend:
 
-1. **Copy PHP Backend:**
+1. **Copy Smart PHP Backend:**
    ```
-   php-backend/chat.php → upload ke folder api/ di Hostinger
+   chatbot-smart.php → upload ke root directory di Hostinger
+   chatbot.php → backup (rename to chatbot-basic.php)
    ```
 
 2. **Update API Route (Optional):**
@@ -30,8 +31,9 @@ Hostinger mendukung PHP secara native, jadi kita gunakan PHP backend:
 public_html/
 ├── index.html (dari folder out/)
 ├── _next/ (static assets dari folder out/)
-├── api/
-│   └── chat.php (PHP backend)
+├── chatbot-smart.php (Smart learning backend)
+├── chatbot-basic.php (Backup basic version)
+├── chat_logs.txt (Will be created automatically)
 ├── .htaccess (routing & security)
 └── ... (semua files dari folder out/)
 ```
