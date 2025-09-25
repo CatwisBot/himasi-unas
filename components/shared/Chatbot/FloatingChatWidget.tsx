@@ -1,10 +1,32 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ChatBot from './ChatBot';
 
 const FloatingChatWidget = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [currentTextIndex, setCurrentTextIndex] = useState(0);
+    const [isAnimating, setIsAnimating] = useState(false);
+
+    const animatedTexts = [
+        "Butuh Bantuan?",
+        "Ada Pertanyaan?", 
+        "Yuk Tanya SIBot!"
+    ];
+
+    useEffect(() => {
+        if (!isOpen) {
+            const interval = setInterval(() => {
+                setIsAnimating(true);
+                setTimeout(() => {
+                    setCurrentTextIndex((prev) => (prev + 1) % animatedTexts.length);
+                    setIsAnimating(false);
+                }, 300); // Half of animation duration
+            }, 3000); // Change text every 3 seconds
+
+            return () => clearInterval(interval);
+        }
+    }, [isOpen, animatedTexts.length]);
 
     const toggleChat = () => {
         setIsOpen(!isOpen);
@@ -12,6 +34,13 @@ const FloatingChatWidget = () => {
 
     return (
         <>
+            {/* Animated Text */}
+            {!isOpen && (
+                <div className={`floating-text ${isAnimating ? 'animating' : ''}`}>
+                    {animatedTexts[currentTextIndex]}
+                </div>
+            )}
+
             {/* Floating Chat Button */}
             <div 
                 className={`floating-chat-button ${isOpen ? 'open' : ''}`}
@@ -66,6 +95,71 @@ const FloatingChatWidget = () => {
             )}
 
             <style jsx>{`
+                .floating-text {
+                    position: fixed;
+                    bottom: 30px;
+                    right: 95px;
+                    background: linear-gradient(135deg, #940002 0%, #4B061A 100%);
+                    color: white;
+                    padding: 10px 16px;
+                    border-radius: 20px 20px 5px 20px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    white-space: nowrap;
+                    z-index: 999;
+                    box-shadow: 0 4px 15px rgba(148, 0, 2, 0.3);
+                    animation: textSlideIn 0.6s ease-out, textFloat 2s ease-in-out infinite;
+                    transform-origin: bottom right;
+                }
+
+                .floating-text.animating {
+                    animation: textSlideOut 0.3s ease-in forwards;
+                }
+
+                .floating-text::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -5px;
+                    right: 20px;
+                    width: 0;
+                    height: 0;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    border-top: 8px solid #4B061A;
+                    transform: rotate(-20deg);
+                }
+
+                @keyframes textSlideIn {
+                    from {
+                        opacity: 0;
+                        transform: translateX(30px) scale(0.8) rotate(5deg);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0) scale(1) rotate(0deg);
+                    }
+                }
+
+                @keyframes textSlideOut {
+                    from {
+                        opacity: 1;
+                        transform: translateX(0) scale(1) rotate(0deg);
+                    }
+                    to {
+                        opacity: 0;
+                        transform: translateX(-20px) scale(0.9) rotate(-3deg);
+                    }
+                }
+
+                @keyframes textFloat {
+                    0%, 100% { 
+                        transform: translateY(0) rotate(0deg); 
+                    }
+                    50% { 
+                        transform: translateY(-3px) rotate(1deg); 
+                    }
+                }
+
                 .floating-chat-button {
                     position: fixed;
                     bottom: 20px;
@@ -173,12 +267,29 @@ const FloatingChatWidget = () => {
 
                 /* Responsive untuk mobile */
                 @media (max-width: 480px) {
+                    .floating-text {
+                        right: 85px;
+                        font-size: 12px;
+                        padding: 8px 12px;
+                        max-width: calc(100vw - 120px);
+                        white-space: normal;
+                        text-align: center;
+                    }
+
                     .floating-chat-window {
                         width: calc(100vw - 40px);
                         height: calc(100vh - 140px);
                         bottom: 90px;
                         right: 20px;
                         left: 20px;
+                    }
+                }
+
+                /* Tablet responsive */
+                @media (max-width: 768px) and (min-width: 481px) {
+                    .floating-text {
+                        right: 90px;
+                        font-size: 13px;
                     }
                 }
             `}</style>
