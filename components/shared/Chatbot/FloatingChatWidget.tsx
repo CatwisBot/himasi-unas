@@ -6,7 +6,9 @@ import ChatBot from './ChatBot';
 const FloatingChatWidget = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [currentTextIndex, setCurrentTextIndex] = useState(0);
-    const [isAnimating, setIsAnimating] = useState(false);
+    const [displayedText, setDisplayedText] = useState('');
+    const [isTyping, setIsTyping] = useState(false);
+    const [isDeleting, setIsDeleting] = useState(false);
 
     const animatedTexts = [
         "Butuh Bantuan?",
@@ -15,18 +17,36 @@ const FloatingChatWidget = () => {
     ];
 
     useEffect(() => {
-        if (!isOpen) {
-            const interval = setInterval(() => {
-                setIsAnimating(true);
-                setTimeout(() => {
-                    setCurrentTextIndex((prev) => (prev + 1) % animatedTexts.length);
-                    setIsAnimating(false);
-                }, 300); // Half of animation duration
-            }, 3000); // Change text every 3 seconds
+        if (isOpen) return;
 
-            return () => clearInterval(interval);
+        const currentText = animatedTexts[currentTextIndex];
+        
+        if (!isDeleting && displayedText !== currentText) {
+            // Typing animation
+            setIsTyping(true);
+            const typingTimeout = setTimeout(() => {
+                setDisplayedText(currentText.slice(0, displayedText.length + 1));
+            }, 100);
+            return () => clearTimeout(typingTimeout);
+        } else if (!isDeleting && displayedText === currentText) {
+            // Pause before deleting
+            setIsTyping(false);
+            const pauseTimeout = setTimeout(() => {
+                setIsDeleting(true);
+            }, 2500);
+            return () => clearTimeout(pauseTimeout);
+        } else if (isDeleting && displayedText !== '') {
+            // Deleting animation
+            const deletingTimeout = setTimeout(() => {
+                setDisplayedText(currentText.slice(0, displayedText.length - 1));
+            }, 50);
+            return () => clearTimeout(deletingTimeout);
+        } else if (isDeleting && displayedText === '') {
+            // Move to next text
+            setIsDeleting(false);
+            setCurrentTextIndex((prev) => (prev + 1) % animatedTexts.length);
         }
-    }, [isOpen, animatedTexts.length]);
+    }, [currentTextIndex, displayedText, isDeleting, isOpen, animatedTexts]);
 
     const toggleChat = () => {
         setIsOpen(!isOpen);
@@ -36,8 +56,9 @@ const FloatingChatWidget = () => {
         <>
             {/* Animated Text */}
             {!isOpen && (
-                <div className={`floating-text ${isAnimating ? 'animating' : ''}`}>
-                    {animatedTexts[currentTextIndex]}
+                <div className="floating-text">
+                    {displayedText}
+                    {isTyping && <span className="cursor">|</span>}
                 </div>
             )}
 
@@ -101,19 +122,27 @@ const FloatingChatWidget = () => {
                     right: 95px;
                     background: linear-gradient(135deg, #940002 0%, #4B061A 100%);
                     color: white;
-                    padding: 10px 16px;
+                    padding: 12px 18px;
                     border-radius: 20px 20px 5px 20px;
                     font-size: 14px;
                     font-weight: 600;
                     white-space: nowrap;
                     z-index: 999;
                     box-shadow: 0 4px 15px rgba(148, 0, 2, 0.3);
-                    animation: textSlideIn 0.6s ease-out, textFloat 2s ease-in-out infinite;
+                    animation: fadeInUp 0.5s ease-out, gentleFloat 3s ease-in-out infinite;
                     transform-origin: bottom right;
+                    min-height: 20px;
+                    min-width: 120px;
+                    display: flex;
+                    align-items: center;
+                    transition: all 0.3s ease;
                 }
 
-                .floating-text.animating {
-                    animation: textSlideOut 0.3s ease-in forwards;
+                .cursor {
+                    animation: blink 1s infinite;
+                    margin-left: 2px;
+                    font-weight: bold;
+                    color: rgba(255, 255, 255, 0.8);
                 }
 
                 .floating-text::after {
@@ -129,34 +158,28 @@ const FloatingChatWidget = () => {
                     transform: rotate(-20deg);
                 }
 
-                @keyframes textSlideIn {
+                @keyframes fadeInUp {
                     from {
                         opacity: 0;
-                        transform: translateX(30px) scale(0.8) rotate(5deg);
+                        transform: translateY(15px) scale(0.9);
                     }
                     to {
                         opacity: 1;
-                        transform: translateX(0) scale(1) rotate(0deg);
+                        transform: translateY(0) scale(1);
                     }
                 }
 
-                @keyframes textSlideOut {
-                    from {
-                        opacity: 1;
-                        transform: translateX(0) scale(1) rotate(0deg);
-                    }
-                    to {
-                        opacity: 0;
-                        transform: translateX(-20px) scale(0.9) rotate(-3deg);
-                    }
+                @keyframes blink {
+                    0%, 50% { opacity: 1; }
+                    51%, 100% { opacity: 0; }
                 }
 
-                @keyframes textFloat {
+                @keyframes gentleFloat {
                     0%, 100% { 
-                        transform: translateY(0) rotate(0deg); 
+                        transform: translateY(0); 
                     }
                     50% { 
-                        transform: translateY(-3px) rotate(1deg); 
+                        transform: translateY(-2px); 
                     }
                 }
 
