@@ -13,7 +13,7 @@ export const leaders: Leader[] = [
   },
   {
     id: "wakil-1",
-    name: "Muhammad Fahreza Situmorang",
+    name: "Mohammad Fahreza Situmorang",
     image: DeadpoolImage,
     role: "Wakil Himpunan",
     instagram: "https://instagram.com/",
