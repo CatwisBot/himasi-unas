@@ -5,12 +5,17 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# API routing untuk chatbot
-RewriteRule ^api/chat/?$ php-backend/chat.php [L,QSA]
+# Custom 404 Error Page
+ErrorDocument 404 /404.html
 
-# Handle Next.js static routes
+# API routing untuk chatbot
+RewriteRule ^api/chat/?$ chatbot-smart.php [L,QSA]
+RewriteRule ^chatbot/?$ chatbot-smart.php [L,QSA]
+
+# Handle Next.js static routes  
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/404\.html$
 RewriteRule ^(.*)$ index.html [L,QSA]
 
 # Security headers
