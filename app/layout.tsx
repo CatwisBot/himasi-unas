@@ -37,8 +37,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={`${poppins.variable} font-poppins text-white overflow-x-hidden`}
       >
         <Hash 
-          enableHash={true}
-          enableFavicon={true}
           enableTitle={true}
         />
         <ThemeProvider
