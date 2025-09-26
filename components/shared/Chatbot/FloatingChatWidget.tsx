@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import ChatBot from './ChatBot';
 
 const FloatingChatWidget = () => {
@@ -10,11 +10,11 @@ const FloatingChatWidget = () => {
     const [isTyping, setIsTyping] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
 
-    const animatedTexts = [
+    const animatedTexts = useMemo(() => [
         "Butuh Bantuan?",
         "Ada Pertanyaan?", 
         "Yuk Tanya SIBot!"
-    ];
+    ], []);
 
     useEffect(() => {
         if (isOpen) return;
