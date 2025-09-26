@@ -49,7 +49,7 @@ export default function Contact() {
           </div>
           
           <Link 
-            href="https://wa.me/6281234567890"
+            href="https://wa.me/628569874380"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#FFE8DB] text-black px-6 py-2 md:py-3 rounded-lg font-semibold text-sm md:text-base hover:bg-[#F5D5C8] hover:text-[#4B061A] transition-colors duration-300 shadow-md hover:shadow-lg inline-block text-center w-full max-w-[200px]"
