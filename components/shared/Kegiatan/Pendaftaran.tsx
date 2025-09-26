@@ -16,13 +16,13 @@ export default function Pendaftaran() {
 
     // Set tanggal pembukaan pendaftaran: 26/09/2025 jam 21:00 (9 malam)
     const openDate = useMemo(() => {
-        const date = new Date('2025-09-26T19:12:00');
+        const date = new Date('2026-09-26T19:00:00');
         return date;
     }, []);
 
-    // Set tanggal penutupan pendaftaran: 27/09/2025 jam 21:00 (9 malam)
+    // Set tanggal penutupan pendaftaran: 26/09/2025 jam 21:00 (9 malam)
     const closeDate = useMemo(() => {
-        const date = new Date('2025-09-27T21:00:00');
+        const date = new Date('2026-09-27T19:00:00');
         return date;
     }, []);
 
@@ -71,7 +71,7 @@ export default function Pendaftaran() {
                 
                 {/* Dynamic Title */}
                 <div className="md:mb-2">
-                    <h1 className="text-xl md:text-3xl lg:text-5xl font-bold text-[#4B061A] mb-2">
+                    <h1 className="text-xl md:text-3xl lg:text-5xl font-bold text-[#4B061A] mb-3">
                         {status === 'waiting' && 'Kegiatan Mendatang'}
                         {status === 'open' && 'Pendaftaran Dibuka'}
                         {status === 'closed' && 'Kegiatan Sedang Berlangsung'}
