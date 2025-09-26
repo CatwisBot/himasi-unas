@@ -58,7 +58,7 @@ const useAnimatedTitle = (customTitle?: string) => {
       document.title = currentText + (isBlinking ? cursorSymbol : "");
     };
 
-    const typeInterval = setInterval(typewriter, 500); // Changed from 100ms to 500ms (0.5 second)
+    const typeInterval = setInterval(typewriter, 250); // Changed from 100ms to 500ms (0.5 second)
     const blinkInterval = setInterval(cursorBlink, 350);
 
     return () => {
