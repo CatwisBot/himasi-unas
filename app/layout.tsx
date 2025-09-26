@@ -5,6 +5,7 @@ import { Poppins } from "next/font/google";
 import Navbar from "@/components/shared/Navbar/Navbar";
 import Footer from "@/components/shared/Footer/Footer";
 import FloatingChatWidget from "@/components/shared/Chatbot/FloatingChatWidget";
+import Hash from "@/components/shared/PathHash/Hash";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -35,6 +36,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={`${poppins.variable} font-poppins text-white overflow-x-hidden`}
       >
+        <Hash 
+          enableHash={true}
+          enableFavicon={true}
+          enableTitle={true}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
