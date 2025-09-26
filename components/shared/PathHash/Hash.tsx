@@ -14,7 +14,10 @@ interface AnimatedEffectsProps {
 // ---------- Enhanced Animated URL Hash Hook ----------
 const useAnimatedHash = (customHashes?: string[]) => {
   useEffect(() => {
-    const baseHashes = customHashes || ['HIMASI-HEBAT', 'HIMASI-KEREN', 'HIMASI-TERDEPAN', 'HIMASI-UNAS-THE-BEST'];
+    // If customHashes is undefined, the hook is disabled
+    if (customHashes === undefined) return;
+    
+    const baseHashes = customHashes.length > 0 ? customHashes : ['HIMASI-HEBAT', 'HIMASI-KEREN', 'HIMASI-TERDEPAN', 'HIMASI-UNAS-THE-BEST'];
     const glitchChars = ['░', '▒', '▓', '█', '◆', '◇', '★', '▲', '▼', '◄', '►'];
     const cursorChars = ['_', '▮', '│', '|'];
     let currentIndex = 0;
@@ -83,7 +86,7 @@ const useAnimatedHash = (customHashes?: string[]) => {
     // Prevent page jumping on hash changes
     const preventJump = (e: Event) => {
       const target = e.target as HTMLElement;
-      const targetHash = (target as any).hash || window.location.hash;
+      const targetHash = (target as HTMLAnchorElement)?.hash || window.location.hash;
       if (targetHash && baseHashes.some(hash => targetHash.includes(hash))) {
         e.preventDefault();
       }
@@ -100,8 +103,10 @@ const useAnimatedHash = (customHashes?: string[]) => {
 };
 
 // ---------- Animated Favicon Hook ----------
-const useAnimatedFavicon = () => {
+const useAnimatedFavicon = (enabled: boolean = true) => {
   useEffect(() => {
+    if (!enabled) return;
+    
     const symbols = ['</>', '{}', '()'];
     let currentIndex = 0;
 
@@ -153,12 +158,15 @@ const useAnimatedFavicon = () => {
         link.href = '/favicon.ico';
       }
     };
-  }, []);
+  }, [enabled]);
 };
 
 // ---------- Animated Title Hook ----------
 const useAnimatedTitle = (customTitle?: string) => {
   useEffect(() => {
+    // If customTitle is undefined, the hook is disabled
+    if (customTitle === undefined) return;
+    
     const titleText = customTitle || "HIMASI UNAS";
     const cursorSymbol = "_";
     let currentText = "";
@@ -217,18 +225,10 @@ const AnimatedEffects: React.FC<AnimatedEffectsProps> = ({
   customHashes,
   customTitle
 }) => {
-  // Conditionally use hooks based on props
-  if (enableHash) {
-    useAnimatedHash(customHashes);
-  }
-  
-  if (enableFavicon) {
-    useAnimatedFavicon();
-  }
-  
-  if (enableTitle) {
-    useAnimatedTitle(customTitle);
-  }
+  // Always call hooks, but conditionally activate them
+  useAnimatedHash(enableHash ? (customHashes || ['HIMASI-HEBAT', 'HIMASI-KEREN', 'HIMASI-TERDEPAN', 'HIMASI-UNAS-THE-BEST']) : undefined);
+  useAnimatedFavicon(enableFavicon);
+  useAnimatedTitle(enableTitle ? (customTitle || "HIMASI UNAS") : undefined);
 
   return null; // This component doesn't render anything visible
 };
