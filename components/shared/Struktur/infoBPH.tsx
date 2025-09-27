@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { leaders } from "@/constants/Struktur/dataBPH";
 import { Instagram } from "lucide-react";
@@ -52,6 +51,30 @@ type Leader = {
 };
 
 export default function BPH() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [loadingUrl, setLoadingUrl] = useState('');
+  const [isZooming, setIsZooming] = useState(false);
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
+    e.preventDefault();
+    setLoadingUrl(url);
+    setIsLoading(true);
+    setIsZooming(false);
+
+    const randomDelay = Math.floor(Math.random() * 2000) + 1000;
+
+    setTimeout(() => {
+      setIsZooming(true);
+    }, randomDelay - 500);
+
+    setTimeout(() => {
+      window.open(url, '_blank', 'noopener,noreferrer');
+      setIsLoading(false);
+      setLoadingUrl('');
+      setIsZooming(false);
+    }, randomDelay);
+  };
+
   const [selectedRole, setSelectedRole] = useState("Ketua Himpunan")
   const [isAnimating, setIsAnimating] = useState(false)
   const [colorTransition, setColorTransition] = useState(false)
@@ -126,10 +149,10 @@ export default function BPH() {
           <p className="mt-2 text-sm text-gray-200 max-w-lg transition-all duration-300">
             {leader.description}
           </p>
-          <Link
+          <a
             href={leader.instagram}
-            target="_blank"
-            className={`group inline-flex items-center justify-center mt-4 p-3 rounded-full bg-gradient-to-r ${roleColors?.gradient || 'from-purple-500 via-pink-500 to-red-500'} text-white shadow-lg transform transition-all duration-500 hover:scale-110 hover:shadow-xl ${roleColors?.shadow || 'hover:shadow-pink-500/25'} hover:-translate-y-1 ${alignRight ? "mx-auto md:ml-auto" : ""}`}
+            onClick={(e) => handleLinkClick(e, leader.instagram)}
+            className={`group inline-flex items-center justify-center mt-4 p-3 rounded-full bg-gradient-to-r ${roleColors?.gradient || 'from-purple-500 via-pink-500 to-red-500'} text-white shadow-lg transform transition-all duration-500 hover:scale-110 hover:shadow-xl ${roleColors?.shadow || 'hover:shadow-pink-500/25'} hover:-translate-y-1 cursor-pointer ${alignRight ? "mx-auto md:ml-auto" : ""}`}
           >
             <Instagram 
               size={20} 
@@ -138,7 +161,7 @@ export default function BPH() {
             <span className="ml-2 text-sm font-medium opacity-100 transition-all duration-300 transform translate-x-0 group-hover:rotate-5">
               Follow
             </span>
-          </Link>
+          </a>
         </div>
       </div>
     )
@@ -198,6 +221,59 @@ export default function BPH() {
         <LeaderCard leader={bendahara} alignRight={false} />
         <LeaderCard leader={sekretaris} alignRight={true} />
       </div>
+
+      {isLoading && (
+        <div className="fixed inset-0 bg-white/95 backdrop-blur-sm z-50 flex items-center justify-center">
+          <div className="text-center">
+            <div className={`relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-12 ${isZooming ? 'logo-zoom' : ''}`}>
+              <div className="absolute inset-0 border-4 border-gray-200 rounded-full"></div>
+              <div className="absolute inset-0 border-4 border-[#4B061A] rounded-full border-t-transparent animate-spin loading-spinner"></div>
+              
+              <div className="absolute inset-4 flex items-center justify-center bg-white rounded-full shadow-lg">
+                <Image
+                  src="/icon/HIMASI.png"
+                  alt="HIMASI Logo"
+                  fill
+                  className="object-contain p-2"
+                />
+              </div>
+            </div>
+            
+            <h3 className="text-xl md:text-2xl font-bold text-[#4B061A] mb-2">
+              Anda akan segera berpindah
+            </h3>
+          </div>
+        </div>
+      )}
+
+      <style jsx>{`
+        .loading-spinner {
+          animation: spinner 1.5s linear infinite;
+        }
+        
+        @keyframes spinner {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+        
+        .logo-zoom {
+          animation: zoom-effect 0.5s ease-out forwards;
+        }
+        
+        @keyframes zoom-effect {
+          0% {
+            transform: scale(1);
+          }
+          100% {
+            transform: scale(1.5);
+          }
+        }
+
+      `}</style>
     </div>
   )
 }
