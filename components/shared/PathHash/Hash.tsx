@@ -8,57 +8,117 @@ interface AnimatedEffectsProps {
   customTitle?: string;
 }
 
-
-
-// ---------- Animated Title Hook ----------
 const useAnimatedTitle = (customTitle?: string) => {
   useEffect(() => {
     // If customTitle is undefined, the hook is disabled
     if (customTitle === undefined) return;
     
-    const titleText = customTitle || "HIMASI UNAS";
+    const baseTitle = "HIMASI UNAS";
+    const values = [
+      " - Aktif",
+      " - Inklusif", 
+      " - Kompetitif"
+    ];
+    
     const cursorSymbol = "_";
+    let currentValueIndex = 0;
     let currentText = "";
     let isTyping = true;
     let charIndex = 0;
     let isBlinking = false;
+    let isShowingValues = false;
+    let isPausing = false;
 
     const typewriter = () => {
-      if (isTyping) {
-        if (charIndex < titleText.length) {
-          currentText = titleText.substring(0, charIndex + 1);
-          document.title = currentText + (isBlinking ? cursorSymbol : "");
-          charIndex++;
-        } else {
-          setTimeout(() => {
-            isTyping = false;
-            charIndex = titleText.length - 1;
-          }, 2000);
+      if (isPausing) return;
+      
+      if (!isShowingValues) {
+        // First phase: Type "HIMASI UNAS"
+        if (isTyping) {
+          if (charIndex < baseTitle.length) {
+            currentText = baseTitle.substring(0, charIndex + 1);
+            document.title = currentText + (isBlinking ? cursorSymbol : "");
+            charIndex++;
+          } else {
+            // Finished typing base title, pause and start showing values
+            isPausing = true;
+            setTimeout(() => {
+              isPausing = false;
+              isShowingValues = true;
+              isTyping = true;
+              charIndex = baseTitle.length; // Start from end of base title
+            }, 1500); // Pause at "HIMASI UNAS_" for 1.5 seconds
+          }
         }
       } else {
-        if (charIndex > 0) { // Changed from >= 0 to > 0
-          currentText = titleText.substring(0, charIndex);
-          document.title = currentText + (isBlinking ? cursorSymbol : "");
-          charIndex--;
+        // Second phase: Show values one by one
+        const currentValue = values[currentValueIndex];
+        const fullText = baseTitle + currentValue;
+        
+        if (isTyping) {
+          if (charIndex < fullText.length) {
+            currentText = fullText.substring(0, charIndex + 1);
+            document.title = currentText + (isBlinking ? cursorSymbol : "");
+            charIndex++;
+          } else {
+            // Finished typing current value, pause then delete
+            isPausing = true;
+            setTimeout(() => {
+              isPausing = false;
+              isTyping = false;
+              charIndex = fullText.length - 1;
+            }, 2000); // Show complete text for 2 seconds
+          }
         } else {
-          // When charIndex reaches 0, keep only "H" and wait before typing again
-          currentText = "H";
-          document.title = currentText + (isBlinking ? cursorSymbol : "");
-          setTimeout(() => {
-            isTyping = true;
-            charIndex = 0;
-          }, 1000);
+          // Delete current value
+          if (charIndex > baseTitle.length) {
+            currentText = fullText.substring(0, charIndex);
+            document.title = currentText + (isBlinking ? cursorSymbol : "");
+            charIndex--;
+          } else {
+            // Finished deleting value, move to next or restart
+            currentValueIndex++;
+            
+            if (currentValueIndex >= values.length) {
+              // Finished all values, delete everything and restart
+              if (charIndex > 1) { // Changed from > 0 to > 1 to keep "H"
+                currentText = baseTitle.substring(0, charIndex);
+                document.title = currentText + (isBlinking ? cursorSymbol : "");
+                charIndex--;
+              } else {
+                // Keep "H" and reset everything
+                currentText = "H";
+                document.title = currentText + (isBlinking ? cursorSymbol : "");
+                currentValueIndex = 0;
+                isShowingValues = false;
+                isTyping = true;
+                charIndex = 0;
+                
+                isPausing = true;
+                setTimeout(() => {
+                  isPausing = false;
+                }, 1000); // Pause before restarting
+              }
+            } else {
+              // Move to next value
+              isPausing = true;
+              setTimeout(() => {
+                isPausing = false;
+                isTyping = true;
+                charIndex = baseTitle.length;
+              }, 500); // Short pause between values
+            }
+          }
         }
       }
     };
 
     const cursorBlink = () => {
       isBlinking = !isBlinking;
-      if (!isTyping && charIndex <= 0) return; // Changed from < 0 to <= 0
       document.title = currentText + (isBlinking ? cursorSymbol : "");
     };
 
-    const typeInterval = setInterval(typewriter, 250); // Changed from 100ms to 500ms (0.5 second)
+    const typeInterval = setInterval(typewriter, 150);
     const blinkInterval = setInterval(cursorBlink, 350);
 
     return () => {
