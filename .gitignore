@@ -57,3 +57,5 @@ instance/
 
 # Local Netlify folder
 .netlify
+
+/lib/generated/prisma
