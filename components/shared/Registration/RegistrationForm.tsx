@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef } from 'react'
+import Image from 'next/image'
 import { Upload, User, Mail, Phone, Calendar, Building, FileImage, Instagram, MessageSquare, AlertCircle, CheckCircle, X } from 'lucide-react'
 
 interface FormData {
@@ -411,9 +412,11 @@ export default function RegistrationForm() {
                     </div>
                   ) : (
                     <div className="relative">
-                      <img
+                      <Image
                         src={previewUrl}
                         alt="Preview Screenshot"
+                        width={400}
+                        height={300}
                         className="w-full max-w-sm mx-auto rounded-xl shadow-lg border-2 border-gray-200"
                       />
                       <button
