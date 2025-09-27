@@ -6,7 +6,6 @@ import { divisions } from "@/constants/Struktur/dataDivision";
 
 export default function Division() {
   const [isLoading, setIsLoading] = useState(false);
-  const [loadingUrl, setLoadingUrl] = useState("");
   const [isZooming, setIsZooming] = useState(false);
 
   const handleLinkClick = (
@@ -14,7 +13,6 @@ export default function Division() {
     url: string
   ) => {
     e.preventDefault();
-    setLoadingUrl(url);
     setIsLoading(true);
     setIsZooming(false);
 
@@ -27,7 +25,6 @@ export default function Division() {
     setTimeout(() => {
       window.open(url, "_blank", "noopener,noreferrer");
       setIsLoading(false);
-      setLoadingUrl("");
       setIsZooming(false);
     }, randomDelay);
   };

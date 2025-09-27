@@ -6,12 +6,10 @@ import { useState } from 'react';
 
 export default function Contact() {
   const [isLoading, setIsLoading] = useState(false);
-  const [loadingUrl, setLoadingUrl] = useState('');
   const [isZooming, setIsZooming] = useState(false);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
     e.preventDefault();
-    setLoadingUrl(url);
     setIsLoading(true);
     setIsZooming(false);
 
@@ -24,7 +22,6 @@ export default function Contact() {
     setTimeout(() => {
       window.open(url, '_blank', 'noopener,noreferrer');
       setIsLoading(false);
-      setLoadingUrl('');
       setIsZooming(false);
     }, randomDelay);
   };
