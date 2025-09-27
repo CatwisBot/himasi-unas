@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { Prisma, RegistrationStatus } from '@prisma/client'
 
 // POST /api/registrations - Submit pendaftaran untuk kegiatan utama
 export async function POST(request: NextRequest) {
@@ -152,14 +153,14 @@ export async function GET(request: NextRequest) {
     const activityId = searchParams.get('activityId')
     const status = searchParams.get('status')
 
-    const whereClause: any = {}
+    const whereClause: Prisma.RegistrationWhereInput = {}
     
     if (activityId) {
       whereClause.activityId = activityId
     }
     
     if (status) {
-      whereClause.status = status
+      whereClause.status = status as RegistrationStatus
     }
 
     const registrations = await prisma.registration.findMany({
