@@ -4,10 +4,10 @@ import { prisma } from '@/lib/prisma'
 // GET /api/activities/[slug] - Ambil detail kegiatan berdasarkan slug
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const { slug } = params
+    const { slug } = await params
 
     const activity = await prisma.activity.findUnique({
       where: { slug },
