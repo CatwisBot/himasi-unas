@@ -14,6 +14,7 @@ const useAnimatedTitle = (customTitle?: string) => {
     if (customTitle === undefined) return;
     
     const baseTitle = "HIMASI UNAS";
+    const shortTitle = "HIMASI";
     const values = [
       " - Aktif",
       " - Inklusif", 
@@ -28,11 +29,12 @@ const useAnimatedTitle = (customTitle?: string) => {
     let isBlinking = false;
     let isShowingValues = false;
     let isPausing = false;
+    let needsShortening = false;
 
     const typewriter = () => {
       if (isPausing) return;
       
-      if (!isShowingValues) {
+      if (!isShowingValues && !needsShortening) {
         // First phase: Type "HIMASI UNAS"
         if (isTyping) {
           if (charIndex < baseTitle.length) {
@@ -40,20 +42,33 @@ const useAnimatedTitle = (customTitle?: string) => {
             document.title = currentText + (isBlinking ? cursorSymbol : "");
             charIndex++;
           } else {
-            // Finished typing base title, pause and start showing values
+            // Finished typing base title, pause and prepare to shorten for values
             isPausing = true;
             setTimeout(() => {
               isPausing = false;
-              isShowingValues = true;
-              isTyping = true;
-              charIndex = baseTitle.length; // Start from end of base title
+              needsShortening = true;
+              isTyping = false;
+              charIndex = baseTitle.length - 1;
             }, 1500); // Pause at "HIMASI UNAS_" for 1.5 seconds
           }
+        }
+      } else if (needsShortening) {
+        // Shorten "HIMASI UNAS" to "HIMASI" before showing values
+        if (charIndex > shortTitle.length) {
+          currentText = baseTitle.substring(0, charIndex);
+          document.title = currentText + (isBlinking ? cursorSymbol : "");
+          charIndex--;
+        } else {
+          // Finished shortening, now show values
+          needsShortening = false;
+          isShowingValues = true;
+          isTyping = true;
+          charIndex = shortTitle.length;
         }
       } else {
         // Second phase: Show values one by one
         const currentValue = values[currentValueIndex];
-        const fullText = baseTitle + currentValue;
+        const fullText = shortTitle + currentValue;
         
         if (isTyping) {
           if (charIndex < fullText.length) {
@@ -71,7 +86,7 @@ const useAnimatedTitle = (customTitle?: string) => {
           }
         } else {
           // Delete current value
-          if (charIndex > baseTitle.length) {
+          if (charIndex > shortTitle.length) {
             currentText = fullText.substring(0, charIndex);
             document.title = currentText + (isBlinking ? cursorSymbol : "");
             charIndex--;
@@ -82,7 +97,7 @@ const useAnimatedTitle = (customTitle?: string) => {
             if (currentValueIndex >= values.length) {
               // Finished all values, delete everything and restart
               if (charIndex > 1) { // Changed from > 0 to > 1 to keep "H"
-                currentText = baseTitle.substring(0, charIndex);
+                currentText = shortTitle.substring(0, charIndex);
                 document.title = currentText + (isBlinking ? cursorSymbol : "");
                 charIndex--;
               } else {
@@ -91,6 +106,7 @@ const useAnimatedTitle = (customTitle?: string) => {
                 document.title = currentText + (isBlinking ? cursorSymbol : "");
                 currentValueIndex = 0;
                 isShowingValues = false;
+                needsShortening = false;
                 isTyping = true;
                 charIndex = 0;
                 
@@ -105,7 +121,7 @@ const useAnimatedTitle = (customTitle?: string) => {
               setTimeout(() => {
                 isPausing = false;
                 isTyping = true;
-                charIndex = baseTitle.length;
+                charIndex = shortTitle.length;
               }, 500); // Short pause between values
             }
           }
